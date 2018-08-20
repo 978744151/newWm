@@ -1,0 +1,401 @@
+<block wx:if="{{!isTabbar}}">
+    <import src="../../templates/loading/loading.wxml" />
+    <import src="../../templates/dialog/dialog.wxml" />
+    <import src="../../templates/upgrade/upgrade.wxml" />
+    <template is="loading" wx:if="{{isLoadIndex}}"></template>
+    <template is="upgrade" wx:if="{{upgrade}}"></template>
+    <block wx:if="{{!isLoadIndex}}">
+        <!--{{crFlag=='m'?'mohu':''}}{{crFlag=='b'?'':''}}{{crFlag=='r'?'red-bg':''}}{{crFlag=='o'?'orange-bg':''}}{{crFlag=='y'?'yellow-bg':''}}{{crFlag=='g'?'green-bg':''}}"  -->
+        <view class="shop {{crFlag=='m'?'mohu':''}}{{crFlag=='b'?'':''}}{{crFlag=='r'?'red-bg':''}}{{crFlag=='o'?'orange-bg':''}}{{crFlag=='y'?'yellow-bg':''}}{{crFlag=='g'?'green-bg':''}}" style='display:none'>
+            <view class="shopInfo" data-shopid="{{shopDet.shopid}}">
+                <view class="rp-flex align-center">
+                    <navigator url="/pages/shopDetail/index" hover-class="none" class="rp-flex-item rp-flex part-one" bindtap="shopDet">
+                        <view class="shopImg">
+                            <image src="{{shopInfo.shoplogo}}"></image>
+                        </view>
+                        <view class="shopDes rp-flex-item">
+                            <view class="shopDes-top overflow-ellipsis">{{shopInfo.shopname}}</view>
+                            <view class="delivery">
+                                <text>{{shopInfo.shopDetail.sendType}}</text>·<text>{{shopDet.arrivetime}}</text>分钟送达
+                            </view>
+                            <view class="shop-bulletin ">
+                                <view class="overflow-ellipsis">
+                                    <text class="icont-notice {{crFlag=='b'?'':''}}{{crFlag=='m'?'icont-noticemohu':''}}{{crFlag=='r'?'icont-noticered':''}}{{crFlag=='o'?'icont-noticeorange':''}}{{crFlag=='y'?'icont-noticeyellow':''}}{{crFlag=='g'?'icont-noticegreen':''}}"></text>
+                                    <text class="bulletin-content">{{shopInfo.notice_info}}</text>
+                                </view>
+                            </view>
+                        </view>
+                    </navigator>
+                    <navigator url="/pages/pay/pay" hover-class="none" class="to-pay">
+                        <text class="icont"></text>
+                        <view>买单</view>
+                    </navigator>
+                </view>
+            </view>
+        </view>
+        <!--活动区域-->
+		<view class='location' wx:if='{{isScene}}'>
+			<view>{{sceneData.shopInfo.shopname}}</view>
+			<view>桌号:{{sceneData.info.title}}</view>
+		</view>
+        <block wx:if="{{actNum>0}}">
+            <view class="activity-box" style='height:68rpx;margin-bottom:20rpx;'>
+                <view>
+                    <swiper autoplay="{{autoplay}}" interval="{{interval}}" vertical="true" circular="true" class="act-swiper">
+                        <swiper-item wx:if="{{reduction._info.length>0}}">
+                            <view class="activity overflow-ellipsis">
+                                <image src="{{reduction.icon_link}}"></image>
+                                <block>
+                                    <text wx:for="{{reduction._info}}" wx:for-item="i" wx:key="index">满{{i.full_money}}减{{i.reduction_money}}{{reduction._info.length==index+1?'':','}}</text>
+                                </block>
+                            </view>
+                        </swiper-item>
+                        <swiper-item wx:if="{{vouchers.length>0}}">
+                            <view class="activity">
+                                <image src="{{vouchers[0].icon_link}}"></image>
+                                <block>
+                                    <text>活动共有{{vouchers.length}}张优惠券</text>
+                                </block>
+                            </view>
+                        </swiper-item>
+                    </swiper>
+                    <text class="act-Num">{{actNum}}个活动</text>
+                </view>
+            </view>
+        </block>
+        <!--活动区域结束-->
+        <swiper style="height:{{scrollHeight}}px;" bindchange="viewChange" duration="300" current="{{cpage}}">
+            <swiper-item   style="height:{{scrollHeight}}px;" class="rp-swiper-item">
+                <view class="shop-goods"  style="height:{{scrollHeight}}px;">
+                    <scroll-view   style="height:{{scrollHeight}}px;" class="shop-menu" scroll-y="true" >
+                        <block wx:for="{{goodsMenu}}" wx:for-item="menu" wx:key="id">
+                            <view bindtap="tapCate" data-cateId="{{menu.id}}" class="menu-item {{goodsType[menu.id].selected == 1 ? 'selected' : ''}}">
+                                <text class="cate-select-tip {{crFlag=='b'?'':''}}{{crFlag=='r'?'cate-select-red':''}}{{crFlag=='o'?'cate-select-orange':''}}{{crFlag=='y'?'cate-select-yellow':''}}{{crFlag=='g'?'cate-select-green':''}}" style="display: {{goodsType[menu.id].selected == 0 ? 'none' : 'block'}}"></text>
+                                <text class="cate-txt overflow-ellipsis3">{{menu.name}}</text>
+                                <!-- style="display: {{goodsType[menu.id].selectNum == 0 ? 'none' : 'block'}}" -->
+                                <text class="cate-select-num" wx:if="{{goodsType[menu.id].selectNum > 0}}">{{goodsType[menu.id].selectNum}}</text>
+                            </view>
+                        </block>
+                    </scroll-view>
+                    <!--style="height:{{scrollHeight}}rpx;"  -->
+                    <scroll-view  style="height:{{scrollHeight}}px;"  class="shop-foods rp-flex-item mytop" scroll-y="true" >
+                        <view class="food-list">
+                            <!--领取商家优惠券-->
+                            <block wx:if="{{status>0 && isStatus}}">
+                                <view class="coupons clearfix">
+                                    <view class="cou-pieces">
+                                        <view class="cou-money">￥<text>{{reduction_money}}</text></view>
+                                        <view class="cou-busi-box">
+                                            <view class="cou-busi">商家优惠券</view>
+                                            <view wx:if="{{intoCoupon.num==1}}">满{{intoCoupon.full_money}}元可用</view>
+                                            <view wx:else>您有<text>{{intoCoupon.num}}</text>张优惠券</view>
+                                        </view>
+                                    </view>
+                                    <view class="getBtn" bindtap="goCoupons">去领取</view>
+                                </view>
+                            </block>
+                            <view class="title overflow-ellipsis">
+                                {{selectedCate.name}}
+                            </view>
+
+                            <block wx:for="{{selectedCateItem}}" wx:for-item="food" wx:if="{{food.is_live==1}}" wx:key="id">
+                                <view class="list">
+                                    <view class="pic" bindtap="showScaleDialog" data-cateid="{{food.typeid}}" data-iid="{{food.id}}">
+                                        <image src="{{food.img}}"></image>
+                                    </view>
+                                    <view class="desc">
+                                        <view class="name">{{food.name}}</view>
+                                        <view class="sold overflow-ellipsis" wx:if="{{food.descgoods}}" style="margin-bottom: 15rpx;">{{food.descgoods}}</view>
+                                        <view class="sold">月销{{food.sellcount}}份</view>
+                                        <view class="price">
+                                            <text class="dw">￥</text>
+                                            <text class="money">{{food.cost}}</text>
+                                        </view>
+                                        <view class="cartcontrol-wrapper" >
+
+
+                                            <view wx:if="{{food.has_type==false}}" class="cartcontrol cartcontrol-list">
+                                                <!-- <view class="cart-decrease" data-cateid="{{food.typeid}}" data-iid="{{food.id}}"  bindtap="tapDecreaseCart" style="display:{{cartData.itemList[food.id] ? (cartData.itemList[food.id].selectNum > 0 ? 'inline-block' : 'none') : 'none'}}"> -->
+                                                 <view class="cart-decrease" data-cateid="{{food.typeid}}" data-iid="{{selectedCate.det[food.id].id}}" data-zy="0"  bindtap="listAdd" style="display:inline-block" wx:if="{{selectedCate.det[food.id].selectNum>0}}">
+                                                    <text class="cart-decrease-icon {{crFlag=='b'?'':''}}{{crFlag=='r'?'cart-decrease-redicon':''}}{{crFlag=='o'?'cart-decrease-orangeicon':''}}{{crFlag=='y'?'cart-decrease-yellowicon':''}}{{crFlag=='g'?'cart-decrease-greenicon':''}}"></text>
+                                                </view>
+                                                <view class="cart-count" style="display:inline-block" wx:if="{{selectedCate.det[food.id].selectNum>0}}">{{selectedCate.det[food.id].selectNum}}</view>
+                                                <!-- <view class="cart-add" data-cateid="{{food.typeid}}" data-iid="{{food.id}}"  bindtap="tapAddCart"> data-zy="0"  bindtap="listAdd" -->
+                                                <view class="cart-add" data-cateid="{{food.typeid}}" data-iid="{{selectedCate.det[food.id].id}}" data-zy="1"  bindtap="listAdd" data-aaaa="{{food.selectNum}}"> 
+                                                    <text class="cart-add-icon {{crFlag=='b'?'':''}}{{crFlag=='r'?'cart-add-redicon':''}}{{crFlag=='o'?'cart-add-orangeicon':''}}{{crFlag=='y'?'cart-add-yellowicon':''}}{{crFlag=='g'?'cart-add-greenicon':''}}"></text>
+                                                </view>
+                                            </view>
+
+
+
+
+                                           <!--选规格按钮  -->
+                                            <view wx:else>
+                                                <!--这边是第一次点击规格之后显示的模块（也是 +  - 只不过事件不一样）  -->
+
+
+                                                <view class="sku-add-box" wx:if="{{selectedCate.det[food.id].selectNum>0}}">
+                                                    <view class="cartcontrol cartcontrol-list">
+                                                        <!-- <view class="skuError" wx:if="{{'hide'+selectedCate.det[food.id].id || false}}" data-fla="{{index}}">请在购物车中删除</view> -->
+                                                        <view class="cart-decrease" data-cateid="{{food.typeid}}" data-iid="{{selectedCate.det[food.id].id}}" bindtap="skuMinus" style="display:inline-block">
+                                                            <text class="cart-decrease-icon {{crFlag=='b'?'':''}}{{crFlag=='r'?'cart-decrease-redicon':''}}{{crFlag=='o'?'cart-decrease-orangeicon':''}}{{crFlag=='y'?'cart-decrease-yellowicon':''}}{{crFlag=='g'?'cart-decrease-greenicon':''}}"></text>
+                                                        </view>
+                                                        <view class="cart-count" style="display:inline-block" wx:if="{{selectedCate.det[food.id].selectNum>0}}">{{selectedCate.det[food.id].selectNum}}</view>
+                                                        <view class="cart-add"  data-cateid="{{food.typeid}}" data-iid="{{selectedCate.det[food.id].id}}" bindtap="showSkuHandle">
+                                                            <text class="cart-add-icon {{crFlag=='b'?'':''}}{{crFlag=='r'?'cart-add-redicon':''}}{{crFlag=='o'?'cart-add-orangeicon':''}}{{crFlag=='y'?'cart-add-yellowicon':''}}{{crFlag=='g'?'cart-add-greenicon':''}}"></text>
+                                                        </view>
+                                                    </view>
+                                                </view>
+
+
+
+                                                 <view wx:else class="sku-btn {{crFlag=='b'||crFlag=='m'?'':''}}{{crFlag=='g'?'sku-btng':''}}{{crFlag=='o'?'sku-btno':''}}{{crFlag=='y'?'sku-btny':''}}{{crFlag=='r'?'sku-btnr':''}}" data-cateid="{{food.typeid}}" data-iid="{{food.id}}" bindtap="showSkuHandle">选规格</view>
+                                            </view>
+                                        </view>
+                                    </view>
+                                </view>
+                            </block>
+
+                        </view>
+                    </scroll-view>
+                </view>
+            </swiper-item>
+        </swiper>
+        <!--已满减显示状态-->
+        <view class="coupon-bar" wx:if="{{cartData.foodsNum > 0 && cpage == 0 && reduction._info.length>0}}">
+            <view>{{discountTip}}</view>
+        </view>
+        <view class="shop-cart" wx:if="{{cpage == 0}}">
+            <view class="content">
+                <view class="content-left {{crFlag=='m'?'mohubg1':''}}" bindtap="tapCartList">
+                    <view class="cart-status-wrapper {{crFlag=='m'?'mohubg2':''}}">
+                        <view class="cart-status {{cartData.foodsNum > 0 ? 'cart-full' : 'cart-empty'}} {{cartData.foodsNum > 0 && crFlag=='b'?'cart-full':''}}{{cartData.foodsNum > 0 && crFlag=='r'?'cart-red':''}}{{cartData.foodsNum > 0 && crFlag=='o'?'cart-orange':''}}{{cartData.foodsNum > 0 && crFlag=='y'?'cart-yellow':''}}{{cartData.foodsNum > 0 && crFlag=='g'?'cart-green':''}}"></view>
+                        <text class="num" style="display:{{cartData.foodsNum > 0 ? 'block' : 'none'}}">{{cartData.foodsNum}}</text>
+                    </view>
+                    <view class="price">
+                        <block wx:if="{{cartData.foodsNum > 0}}">
+                            <text class="rp-money {{crFlag=='m'?'mohu-color1':''}}">￥{{tsTotalPrice}}</text>
+                        </block>
+                        <block wx:else>
+                            <text class="rp-cart-none">未选购商品</text>
+                        </block>
+                    </view>
+                </view>
+                <view class="content-right">
+                    <text wx:if="{{cartData.foodsNum <= 0 }}" class="pay">选好了</text>
+                    <text wx:else bindtap="tapPay" class="gopay pay2 {{crFlag=='m'?'mohubg3':''}}{{crFlag=='b'?'bgblue':''}}{{crFlag=='r'?'bgred':''}}{{crFlag=='o'?'bgorange':''}}{{crFlag=='y'?'bgyellow':''}}{{crFlag=='g'?'bggreen':''}}">选好了</text>
+                </view>
+            </view>
+            <view class="shop-cart-list fold-transition" style="display:{{cartData.display}}">
+                <view class="list-header">
+                    <text class="title {{crFlag=='b'?'':''}}{{crFlag=='r'?'title-red':''}}{{crFlag=='o'?'title-orange':''}}{{crFlag=='y'?'title-yellow':''}}{{crFlag=='g'?'title-green':''}}">购物车</text>
+                    <view class="empty" bindtap="tapEmptyCart">
+                        <text class="icont-del"></text>
+                        <text class="v-middle">清空</text>
+                    </view>
+                </view>
+                <scroll-view class="list-content" scroll-y="true">
+                    <block wx:for="{{cartData.itemList}}" wx:for-item="cartFood" wx:key="id">
+                        <view class="list-food" wx:if="{{cartFood.selectNum>0}}">
+                            <view class="name">{{cartFood.name}}<text class="skuClass" wx:if="{{cartFood.skuAttrname!=''}}">{{cartFood.skuAttrname}}</text></view>
+                            <!-- <text class="price">￥{{cartFood.countPrice}}</text> -->
+                            <text class="price">￥{{cartFood.cost}}</text>
+                            <view class="cartcontrol-wrapper">
+                                <view class="cartcontrol">
+                                    <!-- <view class="cart-decrease" data-cateid="{{cartFood.typeid}}" data-iid="{{cartFood.id}}" bindtap="tapDecreaseCart"> -->
+                                    <view class="cart-decrease" data-cateid="{{cartFood.typeid}}" data-name="{{cartFood.skuAttrname}}" data-iid="{{cartFood.id}}" data-zy="0" data-type_id="{{cartFood.type_id}}" data-tag_id="{{cartFood.tag_id}}" bindtap="{{cartFood.skuAttrname==''?'listAdd':'cartAdd'}}">
+                                        <text class="cart-decrease-icon {{crFlag=='b'?'':''}}{{crFlag=='r'?'cart-decrease-redicon':''}}{{crFlag=='o'?'cart-decrease-orangeicon':''}}{{crFlag=='y'?'cart-decrease-yellowicon':''}}{{crFlag=='g'?'cart-decrease-greenicon':''}}"></text>
+                                    </view>
+                                    <view class="cart-count">{{cartFood.selectNum}}</view>
+                                    <!-- <view class="cart-add" data-cateid="{{cartFood.typeid}}" data-iid="{{cartFood.id}}" bindtap="tapAddCart"> -->
+                                    <view class="cart-add" data-cateid="{{cartFood.typeid}}" data-name="{{cartFood.skuAttrname}}" data-iid="{{cartFood.id}}" data-zy="1" data-type_id="{{cartFood.type_id}}" data-tag_id="{{cartFood.tag_id}}" bindtap="{{cartFood.skuAttrname==''?'listAdd':'cartAdd'}}">
+                                        <text class="cart-add-icon {{crFlag=='b'?'':''}}{{crFlag=='r'?'cart-add-redicon':''}}{{crFlag=='o'?'cart-add-orangeicon':''}}{{crFlag=='y'?'cart-add-yellowicon':''}}{{crFlag=='g'?'cart-add-greenicon':''}}"></text>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </block>
+                    <block>
+                        <view class="list-food">
+                            <text class="name">餐盒费</text>
+                            <!-- <text class="price">￥{{cartData.totalBag}}</text> -->
+                            <text class="price">￥{{sTotalBag}}</text>
+                            <view class="cartcontrol-wrapper">
+                                <view class="cartcontrol"></view>
+                            </view>
+                        </view>
+                    </block>
+                </scroll-view>
+            </view>
+        </view>
+        <view class="list-mask fade-transition" style="display:{{cartData.display}}" bindtap="tapMask"></view>
+        <!-- 歇业状态 -->
+        <view class="rp-dialog {{dialog.flag?'v-block':'v-hide'}}">
+            <view class="mask" bindtap="closeDialog"></view>
+            <view class="body">
+                <view class="content">
+                    <view class="title">{{dialog.title}}</view>
+                    <view class="txt">{{dialog.txt}}</view>
+                </view>
+                <view class="footer" bindtap="closeDialog">
+                    知道了
+                </view>
+            </view>
+        </view>
+        <!--点击菜单列表的商品图片 弹出商品的信息  -->
+        <template is="scaleDialog" data="{{curfood,hiddenSacleDialog,animationData,crFlag}}"></template>
+    </block>
+
+    <!--进店是否送优惠券的弹窗-->
+    <!--intoCoupon.status<=0-->
+    <block wx:if="{{status<=0}}">
+        <view class="shade"></view>
+        <view class="couponModal">
+            <view class="couponClick" bindtap="accept" wx:if="{{randomShow==1}}">
+                <view class="modalCon">
+                    <view class="modalT">
+                        <view class="money">￥<text>{{reduction_money}}</text></view>
+                        <view class="modalMoney">
+                            <text>商家优惠券</text>
+                            <view wx:if="{{intoCoupon.num==1}}">满{{intoCoupon.full_money}}元可用</view>
+                            <view wx:else>共{{intoCoupon.num}}张</view>
+                        </view>
+                    </view>
+                    <text class="modalTime">{{intoCoupon.start_time}} 至 {{intoCoupon.end_time}}</text>
+                </view>
+            </view>
+            <view class="couponClick1" bindtap="accept" wx:if="{{randomShow==2}}">
+                <view class="shopLogo2">
+                    <image src="{{shopLogo1}}"></image>
+                </view>
+                <view class="couponInfo1">
+                    <text>{{shopName1}}</text>
+                    <text>发来{{intoCoupon.num}}张优惠券</text>
+                    <text class="sizeBig">恭喜你!</text>
+                </view>
+            </view>
+            <view class="closeBtn" bindtap="close"></view>
+        </view>
+    </block>
+</block>
+<!--带有底部导航的首页-->
+<block wx:if="{{isTabbar}}">
+    <import src="../DEMOTAB/DEMOTAB.wxml" />
+    <template is="tabbar" data="{{tabbar}}" />
+    <view class="content2">
+        <!--轮播图-->
+        <block>
+            <swiper indicator-dots="{{indicatorDots1}}" autoplay="{{autoplay1}}" interval="{{interval1}}" duration="{{duration1}}" indicator-color="#d3d3d3" indicator-active-color="#ff5a00" class="swiper">
+                <block wx:for="{{imgUrls}}" wx:key="index">
+                    <swiper-item>
+                        <navigator url="{{item.image}}">
+                            <image src="{{item.image}}" class="slide-image"></image>
+                        </navigator>
+                    </swiper-item>
+                </block>
+            </swiper>
+        </block>
+        <!--热门服务-->
+        <view class="hotservice">
+            <view class="temp-tit">
+                <view class="hot-icon"></view>
+                <text>热门服务</text>
+            </view>
+            <view class="hotdiv">
+                <navigator url="/pages/queue/queue" class="hotyue">
+                    <text class="queue-p1">排队取号</text>
+                    <text class="queue-p2">随时取号 告别传统</text>
+                    <view class="queue-table">
+                        <!--<text>排队：0人</text>
+                        <text>空桌：0桌</text>-->
+                    </view>
+                </navigator>
+                <view class="hot-right">
+                    <navigator url="/pages/code/code" class="hotdian">
+                        <text class="queue-p1">点菜</text>
+                        <text class="queue-p2">扫一扫 轻松点菜</text>
+                    </navigator>
+                    <navigator url="/pages/nearbyshop/nearbyshop" class="hotnear">
+                        <text class="queue-p1">附近的店</text>
+                        <text class="queue-p2">发现身边好店</text>
+                    </navigator>
+                </view>
+            </view>
+        </view>
+        <!--大家都在用-->
+        <view class="themuse">
+            <view class="temp-tit">
+                <view class="them-icon"></view>
+                <text>大家都在用</text>
+            </view>
+            <navigator url="/pages/vip/vip" class="contact">
+                <view class="contact-left">
+                    <view class="vip-icon"></view>
+                    <text>会员</text>
+                </view>
+                <view class="contact-right">
+                    <view class="contact-tit">vip会员</view>
+                    <text>消费积分，至尊体验—vip专享只为尊贵</text>
+                    <text>的你。</text>
+                </view>
+            </navigator>
+            <navigator url="/pages/integral/integral" class="contact">
+                <view class="contact-left">
+                    <view class="page-icon"></view>
+                    <text>积分</text>
+                </view>
+                <view class="contact-right">
+                    <view class="contact-tit">积分商城</view>
+                    <text>积分换美食，商城每天推出限量积分兑</text>
+                    <text>换美食活动，先到先得。</text>
+                </view>
+            </navigator>
+            <view class="contact" bindtap="calling">
+                <view class="contact-left">
+                    <view class="contact-icon"></view>
+                    <text>客服</text>
+                </view>
+                <view class="contact-right">
+                    <view class="contact-tit">联系客服</view>
+                    <text>菜品不好吃、外卖不及时、投诉建议…</text>
+                    <text>都可以联系我们，帮您解决！</text>
+                </view>
+            </view>
+        </view>
+        <!--底部小店图标-->
+        <view class="rp-foot">
+            <view class="img"></view>
+        </view>
+    </view>
+</block>
+<!--商品属性sku  -->
+<block wx:if="{{skuShow}}">
+    <view class="skuShade">
+        <view class="sku">
+            <view class="skuTit overflow-ellipsis">{{skuAttr.name}}</view>
+            <scroll-view scroll-y="true" class="sku-scroll">
+            <!--规格  -->
+                <view class="skuList">
+                    <view class="skuTitle">规格：</view>
+                    <view class="skuCon">
+                        <text class="skuItem {{index==currentIndex&&crFlag=='m'?'skublue':''}}{{index==currentIndex&&crFlag=='b'?'skublue':''}}{{index==currentIndex&&crFlag=='r'?'skured':''}}{{index==currentIndex&&crFlag=='o'?'skuorange':''}}{{index==currentIndex&&crFlag=='y'?'skuyellow':''}}{{index==currentIndex&&crFlag=='g'?'skugreen':''}}"
+                            wx:for="{{skuAttr.types}}" wx:key="index" data-aindex="{{index}}" data-parentid="{{item.parentid}}"  bindtap="specChoose" wx:if="{{item.name!=''}}">{{item.name}}</text>
+                    </view>
+                </view>
+                <!--属性  -->
+                 <view class="skuList" wx:for="{{skuAttr.tags}}" wx:key="index" wx:for-index="idx">
+                    <view class="skuTitle" wx:if="{{item.attr_name!=''}}">{{item[0].attr_name}}：</view>
+                    <view class="skuCon">
+                        <text class="skuItem {{i.state==1&&crFlag=='m'?'skublue':''}}{{i.state==1&&crFlag=='b'?'skublue':''}}{{i.state==1&&crFlag=='r'?'skured':''}}{{i.state==1&&crFlag=='o'?'skuorange':''}}{{i.state==1&&crFlag=='y'?'skuyellow':''}}{{i.state==1&&crFlag=='g'?'skugreen':''}}" wx:for="{{item}}" wx:for-item="i" wx:key="index"  data-aindex="{{index}}" data-parentid="{{idx}}" data-name="{{i.name}}" catchtap="attrChoose" wx:if="{{i.name!=''}}">{{i.name}}</text>
+                    </view>
+                </view> 
+            </scroll-view>
+            <view class="selectOk">
+                <view wx:if="{{index==currentIndex}}" wx:for="{{skuAttr.types}}" wx:key="index" data-index="index"><text style="font-size:25rpx;color:#ff5339;">￥</text><text class="selectMoney">{{item.price}}</text></view>
+                <text class="selectBtn {{crFlag=='m'?'selectmohu':''}}{{crFlag=='b'?'selectblue':''}}{{crFlag=='r'?'selectred':''}}{{crFlag=='o'?'selectorange':''}}{{crFlag=='y'?'selectyellow':''}}{{crFlag=='g'?'selectgreen':''}}" bindtap="selectOk">选好了</text>
+            </view>
+            <!-- 关闭按钮   -->
+            <text class="skuClose" bindtap="skuclose"></text>
+        </view>
+    </view>
+</block>

@@ -1,0 +1,48 @@
+<!--pages/myVip/myVip.wxml-->
+
+<view class='Vip'>
+    <!--style='background-image:url({{data.card.background_img}})'  -->
+    <view class='card' bindtap='goMemberCard' style='background-image:url({{data.card.background_img}})'>
+        <!--会员卡 未开通  -->
+        <view class='noVip' wx:if='{{!isVip}}'>
+            <view class='noVip_userInfo'>
+                <image class='card_headImg' src='{{data.memberInfo.logo}}'></image>
+                <text class='name'>{{data.memberInfo.nickName}}</text>
+            </view>
+            <button class='openVip' wx:if='{{data.has_card_set!="0"}}' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">开通会员卡</button>
+            <view class='cardSet' wx:else>商家暂未开通会员卡</view>
+        </view>
+        <!--会员卡 已开通  -->
+        <view class='yesVip' wx:else>
+            <view class='yesVip_userInfo'>
+                <image class='card_headImg' src='{{data.memberInfo.logo}}'></image>
+                <view class='yesVip_text'>
+                    <text class='yesVip_name'>{{data.memberInfo.nickName}}</text>
+                    <text class='yesVip_level'>{{data.card.title}}</text>
+                </view>
+            </view>
+            <view class='balance'>
+                <text class='balance_text'>余额</text>
+                <text class='balance_num'>￥{{data.card.balance}}</text>
+            </view>
+            <view class='yesVip_id'>NO.{{data.card.no}}</view>
+        </view>
+    </view>
+    <!--跳转链接  -->
+    <view class='link_item link_border' data-url='/pages/recharge/recharge' bindtap='jumpLink'>会员卡充值
+        <image class='back' src='https://pic.repaiapp.com/static/png/20180621/15/1529567815189710252.png'></image>
+    </view>
+    <view class='link_item' data-url='/pages/vipInfo/vipInfo' bindtap='jumpLink'>会员卡须知
+        <image class='back' src='https://pic.repaiapp.com/static/png/20180621/15/1529567815189710252.png'></image>
+    </view>
+    <view class='line'></view>
+    <navigator class='link_item link_border' hover-class='none' url='/pages/coupon/coupon'>我的代金券
+        <image class='back' src='https://pic.repaiapp.com/static/png/20180621/15/1529567815189710252.png'></image>
+    </navigator>
+     <navigator class='link_item' hover-class='none' url='/pages/address/index?isVip=1'>收货地址
+        <image class='back' src='https://pic.repaiapp.com/static/png/20180621/15/1529567815189710252.png'></image>
+    </navigator>
+    <!-- <navigator class='link_item' hover-class='none'>门店信息
+        <image class='back' src='https://pic.repaiapp.com/static/png/20180621/15/1529567815189710252.png'></image>
+    </navigator> -->
+</view>

@@ -1,0 +1,142 @@
+<payment data='{{payment}}' bindnowPay='nowPay'></payment>
+
+<view class="order-address cell-more" bindtap="tapAddress">
+  <view class="content" wx:if="{{deaddress}}">
+    <view class="rp-flex align-center">
+      <view class="map ">
+        <text class="iconfont icon-map"></text>
+      </view>
+      <view class="rp-flex-item align-center">
+        <view class="content-top">
+          <text class="name">{{deaddress.contactname}}</text>
+          <text class="phone">{{deaddress.phone}}</text>
+        </view>
+        <text class="">{{deaddress.address}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="content" wx:else>
+    <text class="address">请选择一个收货地址</text>
+  </view>
+</view>
+<form bindsubmit="tapPay">
+  <view class="panel sendTimer {{crFlag=='b'?'':''}}{{crFlag=='r'?'send-red':''}}{{crFlag=='o'?'send-orange':''}}{{crFlag=='y'?'send-yellow':''}}{{crFlag=='g'?'send-green':''}}">
+    <view class="line">
+      <text>配送时间</text>
+      <text class="fr color-main {{crFlag=='b'?'':''}}{{crFlag=='r'?'color-red':''}}{{crFlag=='o'?'color-orange':''}}{{crFlag=='y'?'color-yellow':''}}{{crFlag=='g'?'color-green':''}}">{{sendtime}}</text>
+    </view>
+  </view>
+  <view class="panel">
+    <view class="line">
+      <text>用餐方式</text>
+      <text class="fr">外卖</text>
+    </view>
+  </view>
+  <!-- <view class="panel">
+    <view class="line">
+      <text>支付方式</text>
+      <text class="fr">微信支付</text>
+    </view>
+  </view> -->
+  <view class="panel cart-info">
+    <view class="line shop-info">
+      <image src="{{shopInfo.shoplogo}}" class="logo"></image>
+      <text class="name">{{shopInfo.shopname}}</text>
+    </view>
+    <view class="line cart-items">
+      <view class="cart-items-list">
+        <block wx:for="{{cartData.itemList}}" wx:for-item="food" wx:key="id" wx:for-index='aindex'>
+          <view class="cart-item" wx:if="{{food.selectNum>0}}">
+            <view class="name last">
+              {{food.name}}<text class="skuClass" wx:if="{{food.skuAttrname!=''}}">{{food.skuAttrname}}</text>
+            </view>
+            <text class="num">x{{food.selectNum}}</text>
+            <text class="price">￥{{food.cost}}</text>
+          </view>
+        </block>
+        <block wx:if="{{cartData.totalBag > 0}}">
+          <view class="cart-item">
+            <text class="name">餐盒费</text>
+            <text class="num"></text>
+            <!-- <text class="price">￥{{cartData.totalBag}}</text> -->
+            <text class="price">￥{{sTotalBag}}</text>
+          </view>
+        </block>
+        <view class="cart-item" wx:if="{{deaddress.newpscost>0}}">
+          <text class="name">配送费</text>
+          <text class="num"></text>
+          <text class="price">￥{{deaddress.newpscost}}</text>
+        </view>
+      </view>
+      <!--红包区域-->
+      <view class="redpacket cell-more cell-more2" bindtap="tabredPacket">
+        <view class="line hb-line">
+          <text>优惠券</text>
+          <text class="hbjian" wx:if="{{useMoney>0}}">-￥{{useMoney}}</text>
+          <block wx:else>
+            <text class="hb {{usableData.length>0?'':'hbGray'}}" wx:if="{{usableData.length>0}}">{{usableData.length}}个可用</text>
+            <text class="noyhj" wx:else>无可用优惠券</text>
+          </block>
+
+        </view>
+      </view>
+      <view class="redpacket" wx:if='{{userInfo.has_card!="0"}}'>
+        <view class="line hb-line">
+          <text>会员折扣</text>
+          <text class="hbjian" >-￥{{disAmount}}</text>
+        </view>
+      </view>
+      <!--  wx:if="{{youhui>0}}" -->
+      <view class="redpacket">
+        <view class="line hb-line">
+          <text>在线支付立减优惠</text>
+          <block>
+            <text class="hbjian" wx:if="{{youhui>0}}">-￥{{youhui}}</text>
+            <text wx:elif="{{hasReduction}}" style="float:right;color:#666;">暂未满足条件</text>
+            <text wx:else style="float:right;color:#666;">暂无满减活动</text>
+          </block>
+        </view>
+      </view>
+      <!--红包区域结束-->
+      <view class="cart-item-total">
+        <text>待支付 ￥{{cartData.totalPrice}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="panel remark">
+    <picker name="peopleNum" class="line order-sendtime cell-more" bindchange="bindPickerChangeNum" value="{{peopleNumIndex}}" range="{{peopleNum}}">
+      <text>用餐人数</text>
+      <text class="fr pr20" style="padding-right:0;">{{peopleNum[peopleNumIndex]}}</text>
+    </picker>
+    <input class="line" placeholder="添加备注" name="remark" maxlength="100" />
+  </view>
+  <view class="shop-cart">
+    <view class="content">
+      <view class="content-left {{crFlag=='m'?'mohubg1':''}}">
+        <view class="price {{crFlag=='m'?'mohubg4':''}}">待支付
+          <text class="r-orgin {{crFlag=='m'?'mohubg5':''}}">￥{{cartData.totalPrice}}</text>
+          <text style="margin-left:12rpx;" class="{{crFlag=='m'?'mohubg6':''}}">|</text>
+        </view>
+             <view class="desc {{crFlag=='m'?'mohubg6':''}}" wx:if="{{deaddress.newpscost>0 && canps!=0}}">配送费{{deaddress.newpscost}}元</view>
+            <view class="desc  {{crFlag=='m'?'mohubg6':''}}" wx:if="{{deaddress.newpscost==0 && canps!=0}}">免配送费</view>
+            <view class="desc  {{crFlag=='m'?'mohubg6':''}}"  wx:if="{{ canps==0}}">超出最大配送范围</view>
+      </view>
+      <view class="content-right">
+        <button class="gopay {{crFlag=='m'?'mohubg3':''}}{{crFlag=='b'?'':''}}{{crFlag=='r'?'bgred':''}}{{crFlag=='o'?'bgorange':''}}{{crFlag=='y'?'bgyellow':''}}{{crFlag=='g'?'bggreen':''}} {{canps==0?'canps':''}}" formType="submit" style="border-radius:0;border:none;">提交订单</button>
+      </view>
+    </view>
+  </view>
+</form>
+<!-- 歇业状态 -->
+<view class="rp-dialog {{dialog.flag?'v-block':'v-hide'}}">
+  <view class="mask" bindtap="closeDialog"></view>
+  <view class="body">
+    <view class="content">
+      <view class="title">{{dialog.title}}</view>
+      <view class="txt">{{dialog.txt}}</view>
+    </view>
+    <view class="footer" bindtap="closeDialog">
+      知道了
+    </view>
+  </view>
+</view>

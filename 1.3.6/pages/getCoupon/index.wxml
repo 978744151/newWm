@@ -1,0 +1,16 @@
+<import src="../../templates/loading/loading.wxml" />
+<template is="loading" wx:if="{{isLoad}}"></template>
+<block wx:if="{{!isLoad}}">
+  <view class="shopName">{{shopName}}</view>
+  <view class="getCoupon">您已领取本店 <text>￥</text> <text class="totalCoupon">{{data.total_money}}</text> 优惠券</view>
+  <block wx:for="{{data.result}}" wx:key="index">
+    <view class="coupon">
+      <view class="moneyBox"><text>￥</text><text class="money">{{item.money}}</text></view>
+      <view class="fullMoney">
+        <text>{{item.text}}</text>
+        <text class="time">{{item.start_time}}至{{item.end_time}}</text>
+      </view>
+    </view>
+  </block>
+  <view class="goBtn" bindtap="goOrder">去下单</view>
+</block>

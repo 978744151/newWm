@@ -1,0 +1,11 @@
+<!--pages/index/index.wxml-->
+<view class='header'>
+    <button bindtap='makePhone' plain='true' hover-class='none'><image src='https://pic.repaiapp.com/static/png/20180103/11/1514951396309510153.png'></image>
+    电话咨询</button>
+</view>
+
+<scroll-view class='content' scroll-x>
+	<view class='slideBox' style='width:{{list.length*449+60}}rpx' >
+        <view class='slide-item' wx:for='{{list}}' style='background-image:url({{item.src}})'></view>
+    </view>
+</scroll-view>

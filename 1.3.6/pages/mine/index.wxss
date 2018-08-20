@@ -1,0 +1,193 @@
+
+page {
+    background: #f6f6f6;
+}
+.content {
+    padding-bottom: 100rpx;
+}
+
+.img-wapper {
+    height: 126rpx;
+    padding-top: 130rpx;
+}
+
+.mycenter-top {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: center;
+    /*height: 494rpx;*/
+    background: url('https://pic.repaiapp.com/pic/cd/3e/2c/cd3e2c5121cb49c23f8cf7eb67f7607caaea8d9f.png');
+    background-size: 100% 100%;
+}
+
+.userinfo-avatar {
+    width: 126rpx;
+    height: 126rpx;
+    border-radius: 50%;
+}
+
+.userinfo-nickname {
+    font-size: 35rpx;
+    color: #262626;
+    margin-top: 20rpx;
+    font-weight: bold;
+}
+
+.userinfo-jilu {
+    font-size: 28rpx;
+    color: #666666;
+    margin-top: 30rpx;
+}
+
+.mycenterlist {
+    margin-top: 25rpx;
+}
+
+.mycenterlist .iconfont {
+    font-size: 32rpx;
+    color: #666;
+}
+
+.mycenterdiv {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 35rpx;
+    border-bottom: 1px solid #f0f0f0;
+    height: 115rpx;
+    background: #fff;
+    color: #262626;
+}
+
+.list-text {
+    flex: 1;
+    font-size: 35rpx;
+    color: #262626;
+    margin-left: 30rpx;
+}
+
+.list-right {
+    width: 13rpx;
+    height: 26rpx;
+    background: url(https://pic.repaiapp.com/pic/9d/81/bb/9d81bba9f6db84625870e66d1312ae473d39b6b1.png);
+    background-size: 100% 100%;
+    margin-left: 25rpx;
+}
+
+.list-hint {
+    font-size: 28rpx;
+    color: #999999;
+}
+
+.my-tab {
+    padding: 26rpx 0;
+    height: 66rpx;
+    line-height: 66rpx;
+    font-size: 30rpx;
+    text-align: center;
+}
+
+.my-tab text {
+    vertical-align: middle;
+}
+
+.my-tab .rp-flex-item {
+    position: relative;
+}
+.w100{width: 100%;}
+.order-icont {
+    display: inline-block;
+    width: 32rpx;
+    height: 39rpx;
+    background: url('https://pic.repaiapp.com/pic/eb/dc/68/ebdc68c69a5e6153cda27d0e34a88f4b7d48c3b7.png') center no-repeat;
+    background-size: cover;
+    margin-right: 14rpx;
+}
+
+.money-icont {
+    display: inline-block;
+    width: 44rpx;
+    height: 44rpx;
+    background: url('https://pic.repaiapp.com/pic/21/fd/b1/21fdb143217aac81100b844ddc96470b476618e2.png')center no-repeat;
+    background-size: cover;
+    margin-right: 14rpx;
+}
+
+.border-left::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 1px;
+    background: #f2f2f2;
+}
+
+.icont {
+    display: block;
+    width: 42rpx;
+    height: 42rpx;
+}
+
+.icont.icont-vip {
+    background: url('https://pic.repaiapp.com/pic/2c/30/82/2c308219b3c2c1fe381b9d74b72e9f06803160de.png') center left no-repeat;
+    background-size: 40rpx 40rpx;
+}
+
+.icont.icont-tel {
+    background: url('https://pic.repaiapp.com/pic/f2/45/7f/f2457f9aa1761730c4657e871b3a3b18f4aece75.png') center left no-repeat;
+    background-size: 40rpx 40rpx;
+}
+
+.icont.icont-talk {
+    background: url('https://pic.repaiapp.com/pic/ca/79/27/ca7927e4e8de672a240722456e5e3943d8d18d36.png') center left no-repeat;
+    background-size: 40rpx 40rpx;
+}
+
+.icont.icont-call {
+    background: url('https://pic.repaiapp.com/pic/7e/99/74/7e99740dce3dcd44624580e6e58015252edf31b1.png') center left no-repeat;
+    background-size: 40rpx 40rpx;
+}
+
+.icont.icont-care {
+    background: url('https://pic.repaiapp.com/pic/72/5a/8f/725a8f6953610e7ce203a3a695ca5a94ad356283.png') center left no-repeat;
+    background-size: 40rpx 40rpx;
+}
+
+.icont.icont-clear {
+    background: url('https://pic.repaiapp.com/pic/c7/66/23/c766232268dd3f8fda654de9e878a1df8d66f785.png') center left no-repeat;
+    background-size: 40rpx 40rpx;
+}
+
+.icont.icont-page {
+    background: url('https://pic.repaiapp.com/pic/13/fc/ec/13fcecc43112d75aa9eca3f39bc4ea698caef41a.png') center left no-repeat;
+    background-size: 40rpx 40rpx;
+}
+
+/*小店图标*/
+.rp-foot {
+    text-align: center;
+    padding: 25rpx 0;
+    width: 100%;
+}
+
+.rp-foot .img {
+    width: 100%;
+    height: 84rpx;
+    background: url('https://pic.repaiapp.com/pic/05/25/31/052531731aeab17ee0b85a11c74a7da348631ee0.png') center no-repeat;
+    background-size: auto 84rpx;
+}
+
+
+
+
+
+
+
+
+
+
+
+@import "../DEMOTAB/DEMOTAB.wxss";

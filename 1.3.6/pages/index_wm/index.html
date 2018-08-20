@@ -1,0 +1,366 @@
+<import src="../../templates/loading/loading.wxml" />
+<import src="../../templates/dialog/dialog.wxml" />
+<import src="../../templates/upgrade/upgrade.wxml" />
+<template is="loading" wx:if="{{isLoadIndex}}"></template>
+<template is="upgrade" wx:if="{{upgrade}}"></template>
+
+ <import src="../../templates/message/message.wxml" /> 
+
+ <template is="message" data="{{showMessage,messageContent}}"></template> 
+ <!-- <block> -->
+<block wx:if = "{{DifferTime <= 0}}">
+  <view class="zzc_box">
+      <view class='zzc_content'>
+          <view class="zzc_box_stop">
+            <text>该功能暂停使用</text>
+          </view>
+          <view class="zzc_box_images">
+            <image src="{{erweima}}" bindtap="previewImages" data-src='{{erweima}}'></image>
+          </view>
+          <view view class="zzc_box_kefu">
+            <text style="display:block">长按识别二维码</text>
+            <text style="display:block">了解更多资讯</text>
+          </view>
+      </view>
+  </view>
+</block>
+<block wx:if="{{!isTabbar}}">
+  <!-- 新首页 -->
+  <block wx:if="{{!isLoadIndex }}">
+    
+    <block wx:if="{{indexTemp == 2}}">
+      <include src="../../templates/index/index_2.wxml"/>
+    </block>
+
+    <block wx:elif="{{indexTemp == 3}}">
+      <include src="../../templates/index/index_3.wxml"/>
+    </block>
+
+    <block wx:elif="{{indexTemp == 4}}">
+      <include src="../../templates/index/index_4.wxml"/>
+    </block>
+
+    <block wx:elif="{{indexTemp == 5}}">
+      <include src="../../templates/index/index_5.wxml"/>
+    </block>
+
+    <block wx:else>
+      <view class="shop {{crFlag=='m'?'mohu':''}}{{crFlag=='b'?'':''}}{{crFlag=='r'?'red-bg':''}}{{crFlag=='o'?'orange-bg':''}}{{crFlag=='y'?'yellow-bg':''}}{{crFlag=='g'?'green-bg':''}}">
+        <view class="shopInfo" data-shopid="{{shopDet.shopid}}">
+          <view class="rp-flex align-center">
+            <navigator url="/pages/shopDetail/index" hover-class="none" class="rp-flex-item rp-flex part-one" bindtap="shopDet">
+              <view class="shopImg">
+                <image src="{{z_data.shoplogo}}"></image>
+              </view>
+              <view class="shopDes rp-flex-item">
+                <!--overflow-ellipsis  -->
+                <view class="shopDes-top" style=' position: relative;display:flex;align-items:center;'>
+                  <view style='max-width:350rpx;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;'>{{z_data.shopname}}</view>
+
+                  <image src='https://pic.repaiapp.com/static/png/20171228/17/1514452009441389954.png' style='width:117rpx;height:32rpx;margin-left:20rpx' wx:if="{{z_data.is_open==1}}"></image>
+                  <image wx:else src='https://pic.repaiapp.com/static/jpg/20180703/18/1530613657024215757.jpg' style='width:117rpx;height:32rpx;margin-left:20rpx;border-radius:4rpx;'></image>
+                </view>
+                <view class="delivery">
+                  <text>{{z_data.sendType}}</text> ·
+                  <text>{{z_data.arrivetime}}</text>分钟送达
+                </view>
+                <view class="shop-bulletin ">
+                  <view class="overflow-ellipsis">
+                    <text class="icont-notice {{crFlag=='b'?'':''}}{{crFlag=='m'?'icont-noticemohu':''}}{{crFlag=='r'?'icont-noticered':''}}{{crFlag=='o'?'icont-noticeorange':''}}{{crFlag=='y'?'icont-noticeyellow':''}}{{crFlag=='g'?'icont-noticegreen':''}}"></text>
+                    <text class="bulletin-content">{{z_data.notice_info}}</text>
+                  </view>
+                </view>
+              </view>
+            </navigator>
+          </view>
+        </view>
+        <!--活动区域-->
+        <block wx:if="{{z_data.hasCx>0}}">
+          <view class="activity-box" style='background:transparent;color:#fff'>
+            <view>
+              <swiper autoplay="{{autoplay}}" interval="{{interval}}" vertical="true" circular="true" class="act-swiper">
+                <block wx:for="{{z_data.cxinfo}}" wx:key="info">
+                  <swiper-item>
+                    <view class="activity overflow-ellipsis">
+                      <image src="{{item.icon}}"></image>
+                      <block>
+                        <text>{{item.info}}</text>
+                      </block>
+                    </view>
+                  </swiper-item>
+                </block>
+              </swiper>
+              <text class="act-Num">{{z_data.hasCx}}个活动</text>
+            </view>
+          </view>
+        </block>
+      </view>
+
+      <!--zbanner  -->
+      <view class='z_banner'>
+        <swiper indicator-dots="{{indicatorDots}}" class="z_banner" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
+          <block wx:for="{{z_data.banners}}" wx:key="imgs">
+            <swiper-item>
+              <image src="{{item}}" class="slide-image" data-url="{{item.link}}" bindtap="product" />
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
+      <!--znav  -->
+      <view class='z_nav'>
+        <navigator url="/pages/index_ts/index" hover-class="none" open-type='navigate' class='z_navall'>
+          <view class='z_navList'>
+            <image src='https://pic.repaiapp.com/static/png/20171228/16/1514449566683310157.png' class='znav1'></image>
+          </view>
+          <view class='z_name'>堂食</view>
+        </navigator>
+        <navigator url="/pages/index_zt/index" hover-class="none" open-type='navigate' class='z_navall'>
+            <view class='z_navList'>
+              <image src='https://pic.repaiapp.com/pic/9a/14/4f/9a144f0f544ebcefd7a27136f3a2adcbc2c17426.png' class='znav1'></image>
+            </view>
+            <view class='z_name'>自提</view>
+        </navigator>
+        <navigator url="/pages/index_wm/index" hover-class="none" open-type='navigate' class='z_navall'>
+          <view class='z_navList'>
+            <image src='https://pic.repaiapp.com/static/png/20171228/16/1514449736047674952.png' class='znav2'></image>
+          </view>
+          <view class='z_name'>外卖</view>
+        </navigator>
+        <navigator url="/pages/pay/pay" hover-class="none" open-type='navigate' class='z_navall'>
+          <view class='z_navList'>
+            <image src='https://pic.repaiapp.com/static/png/20171228/16/1514449755421552100.png' class='znav3'></image>
+          </view>
+          <view class='z_name'>买单</view>
+        </navigator>
+        <navigator url="/pages/coupon/coupon" hover-class="none" open-type='navigate' class='z_navall'>
+          <view class='z_navList'>
+            <image src='https://pic.repaiapp.com/static/png/20171228/16/1514449775248575749.png' class='znav4'></image>
+          </view>
+          <view class='z_name'>优惠券</view>
+        </navigator>
+      </view>
+      <!--商家信息  -->
+      <view class='z_infor'>
+        <view class='z_infor_title'>商家信息</view>
+        <view class='z_infor_list' bindtap='z_phone' data-phone="{{z_data.phone}}">
+          <view>
+            商家电话
+            <text>{{z_data.phone}}</text>
+          </view>
+          <image src='https://pic.repaiapp.com/static/png/20171228/16/1514449882335555101.png'></image>
+        </view>
+        <view class='z_infor_list' bindtap='z_address' data-lat="{{z_data.lat}}" data-lng="{{z_data.lng}}" data-name="{{z_data.shopname}}" data-address="{{z_data.address}}">
+          <view style='display:flex;width:95%'>
+            商家地址
+            <view style='width:70%;margin-left:90rpx;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;'>{{z_data.address}}</view>
+          </view>
+          <image src='https://pic.repaiapp.com/static/png/20171228/16/1514449882335555101.png'></image>
+        </view>
+        <view class='z_infor_list'>
+          <view>
+            营业时间
+            <text>{{z_data.starttime}}</text>
+          </view>
+          <!-- <image></image> -->
+        </view>
+      </view>
+      <!--配送信息  -->
+      <view class='z_send'>
+        <view class='z_send_title' >配送信息</view>
+        <view class='sendIn'>
+          <view>{{z_data.sendType}}</view>
+          {{z_data.psDetail}}
+        </view>
+      </view>
+      <!--新用户  -->
+      <view class='z_newuser'>
+        <view wx:for="{{z_data.cxinfo}}" class='cxinfo' wx:key="index">
+          <image src='{{item.icon}}'></image>
+          <view style='width:90%;'>{{item.info}}</view>
+        </view>
+        <!-- <view>
+          <image></image>
+          新用户
+        </view>
+        <view>
+          <image></image>
+          满100减50
+        </view> -->
+      </view>
+    </block>
+
+    <!-- 歇业状态 -->
+    <view class="rp-dialog {{dialog.flag?'v-block':'v-hide'}}">
+      <view class="mask" bindtap="closeDialog"></view>
+      <view class="body">
+        <view class="content">
+          <view class="title">{{dialog.title}}</view>
+          <view class="txt">{{dialog.txt}}</view>
+        </view>
+        <view class="footer" bindtap="closeDialog">
+          知道了
+        </view>
+      </view>
+    </view>
+    <!--点击菜单列表的商品图片 弹出商品的信息  -->
+    <template is="scaleDialog" data="{{curfood,hiddenSacleDialog,animationData,crFlag}}"></template>
+  </block>
+  <!--进店是否送优惠券的弹窗-->
+  <!--intoCoupon.status<=0-->
+  <block wx:if="{{status<=0}}">
+    <view class="shade"></view>
+    <view class="couponModal">
+      <view class="couponClick" bindtap="accept" wx:if="{{randomShow==1}}">
+        <view class="modalCon">
+          <view class="modalT">
+            <view class="money">￥
+              <text>{{reduction_money}}</text>
+            </view>
+            <view class="modalMoney">
+              <text>商家优惠券</text>
+              <view wx:if="{{intoCoupon.num==1}}">满{{intoCoupon.full_money}}元可用</view>
+              <view wx:else>共{{intoCoupon.num}}张</view>
+            </view>
+          </view>
+          <text class="modalTime">{{intoCoupon.start_time}} 至 {{intoCoupon.end_time}}</text>
+        </view>
+      </view>
+      <view class="couponClick1" bindtap="accept" wx:if="{{randomShow==2}}">
+        <view class="shopLogo2">
+          <image src="{{shopLogo1}}"></image>
+        </view>
+        <view class="couponInfo1">
+          <text>{{shopName1}}</text>
+          <text>发来{{intoCoupon.num}}张优惠券</text>
+          <text class="sizeBig">恭喜你!</text>
+        </view>
+      </view>
+      <view class="closeBtn" bindtap="close"></view>
+    </view>
+  </block>
+</block>
+<!--带有底部导航的首页-->
+<block wx:if="{{isTabbar}}">
+  <import src="../DEMOTAB/DEMOTAB.wxml" />
+  <!-- <template is="tabbar" data="{{tabbar}}" /> -->
+  <view class="content2">
+    <!--轮播图-->
+    <block>
+      <swiper indicator-dots="{{indicatorDots1}}" autoplay="{{autoplay1}}" interval="{{interval1}}" duration="{{duration1}}" indicator-color="#d3d3d3" indicator-active-color="#ff5a00" class="swiper">
+        <block wx:for="{{imgUrls}}" wx:key="index">
+          <swiper-item>
+            <navigator url="{{item.image}}">
+              <image src="{{item.image}}" class="slide-image"></image>
+            </navigator>
+          </swiper-item>
+        </block>
+      </swiper>
+    </block>
+    <!--热门服务-->
+    <view class="hotservice">
+      <view class="temp-tit">
+        <view class="hot-icon"></view>
+        <text>热门服务</text>
+      </view>
+      <view class="hotdiv">
+        <navigator url="/pages/queue/queue" class="hotyue">
+          <text class="queue-p1">排队取号</text>
+          <text class="queue-p2">随时取号 告别传统</text>
+          <view class="queue-table">
+            <!--<text>排队：0人</text>
+                        <text>空桌：0桌</text>-->
+          </view>
+        </navigator>
+        <view class="hot-right">
+          <navigator url="/pages/code/code" class="hotdian">
+            <text class="queue-p1">积分商城</text>
+            <text class="queue-p2">小积分 大优惠</text>
+          </navigator>
+          <navigator url="/pages/nearbyshop/nearbyshop" class="hotnear">
+            <text class="queue-p1">附近的店</text>
+            <text class="queue-p2">发现身边好店</text>
+          </navigator>
+        </view>
+      </view>
+    </view>
+    <!--大家都在用-->
+    <view class="themuse">
+      <view class="temp-tit">
+        <view class="them-icon"></view>
+        <text>大家都在用</text>
+      </view>
+      <navigator url="/pages/vip/vip" class="contact">
+        <view class="contact-left">
+          <view class="vip-icon"></view>
+          <text>会员</text>
+        </view>
+        <view class="contact-right">
+          <view class="contact-tit">vip会员</view>
+          <text>消费积分，至尊体验—vip专享只为尊贵</text>
+          <text>的你。</text>
+        </view>
+      </navigator>
+      <navigator url="/pages/integral/integral" class="contact">
+        <view class="contact-left">
+          <view class="page-icon"></view>
+          <text>积分</text>
+        </view>
+        <view class="contact-right">
+          <view class="contact-tit">积分商城</view>
+          <text>积分换美食，商城每天推出限量积分兑</text>
+          <text>换美食活动，先到先得。</text>
+        </view>
+      </navigator>
+      <view class="contact" bindtap="calling">
+        <view class="contact-left">
+          <view class="contact-icon"></view>
+          <text>客服</text>
+        </view>
+        <view class="contact-right">
+          <view class="contact-tit">联系客服</view>
+          <text>菜品不好吃、外卖不及时、投诉建议…</text>
+          <text>都可以联系我们，帮您解决！</text>
+        </view>
+      </view>
+    </view>
+    <!--底部小店图标-->
+    <view class="rp-foot">
+      <view class="img"></view>
+    </view>
+  </view>
+</block>
+<!--商品属性sku  -->
+<block wx:if="{{skuShow}}">
+  <view class="skuShade">
+    <view class="sku">
+      <view class="skuTit overflow-ellipsis">{{skuAttr.name}}</view>
+      <scroll-view scroll-y="true" class="sku-scroll">
+        <!--规格  -->
+        <view class="skuList">
+          <view class="skuTitle">规格：</view>
+          <view class="skuCon">
+            <text class="skuItem {{index==currentIndex&&crFlag=='m'?'skublue':''}}{{index==currentIndex&&crFlag=='b'?'skublue':''}}{{index==currentIndex&&crFlag=='r'?'skured':''}}{{index==currentIndex&&crFlag=='o'?'skuorange':''}}{{index==currentIndex&&crFlag=='y'?'skuyellow':''}}{{index==currentIndex&&crFlag=='g'?'skugreen':''}}"
+              wx:for="{{skuAttr.types}}" wx:key="index" data-aindex="{{index}}" data-parentid="{{item.parentid}}" bindtap="specChoose" wx:if="{{item.name!=''}}">{{item.name}}</text>
+          </view>
+        </view>
+        <!--属性  -->
+        <view class="skuList" wx:for="{{skuAttr.tags}}" wx:key="index" wx:for-index="idx">
+          <view class="skuTitle" wx:if="{{item.attr_name!=''}}">{{item[0].attr_name}}：</view>
+          <view class="skuCon">
+            <text class="skuItem {{i.state==1&&crFlag=='m'?'skublue':''}}{{i.state==1&&crFlag=='b'?'skublue':''}}{{i.state==1&&crFlag=='r'?'skured':''}}{{i.state==1&&crFlag=='o'?'skuorange':''}}{{i.state==1&&crFlag=='y'?'skuyellow':''}}{{i.state==1&&crFlag=='g'?'skugreen':''}}"
+              wx:for="{{item}}" wx:for-item="i" wx:key="index" data-aindex="{{index}}" data-parentid="{{idx}}" data-name="{{i.name}}" catchtap="attrChoose" wx:if="{{i.name!=''}}">{{i.name}}</text>
+          </view>
+        </view>
+      </scroll-view>
+      <view class="selectOk">
+        <view wx:if="{{index==currentIndex}}" wx:for="{{skuAttr.types}}" wx:key="index" data-index="index">
+          <text style="font-size:25rpx;color:#ff5339;">￥</text>
+          <text class="selectMoney">{{item.price}}</text>
+        </view>
+        <text class="selectBtn {{crFlag=='m'?'selectmohu':''}}{{crFlag=='b'?'selectblue':''}}{{crFlag=='r'?'selectred':''}}{{crFlag=='o'?'selectorange':''}}{{crFlag=='y'?'selectyellow':''}}{{crFlag=='g'?'selectgreen':''}}" bindtap="selectOk">选好了</text>
+      </view>
+      <!-- 关闭按钮   -->
+      <text class="skuClose" bindtap="skuclose"></text>
+    </view>
+  </view>
+</block>

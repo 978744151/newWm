@@ -1,0 +1,100 @@
+  <view class="index_5">
+    <view style='position: relative'>
+      <swiper  autoplay="true" circular='true' indicator-dots='{{store.images.length==1?false:true}}'  style='height:243rpx;' indicator-color='#fff' indicator-active-color='#eb8e42'>
+        <block wx:for="{{z_data.banners}}" wx:key="list">
+          <swiper-item>
+            <image src="{{item}}" class="slide-image" data-url='{{item.link}}' bindtap='imgUrl'/>
+          </swiper-item>
+        </block>
+      </swiper>
+      <view class='addressTip' bindtap='z_address' data-lat="{{z_data.lat}}" data-lng="{{z_data.lng}}" data-name="{{z_data.shopname}}" data-address="{{z_data.address}}">
+          <icon class='site'></icon>
+          <view>{{z_data.address}}</view>
+          <icon class='right'></icon>
+        </view>
+    </view>
+
+    <!-- 店铺信息 -->
+    <view class='shopInfo'>
+      <view class='avatar'>
+        <navigator url="/pages/shopDetail/index" hover-class="none" bindtap="shopDet">
+          <image src='{{z_data.shoplogo}}'></image>
+        </navigator>
+      </view>
+      <view class='shopIntro'>
+        <navigator url="/pages/shopDetail/index" hover-class="none" bindtap="shopDet">
+          <view class='shopTitle'>{{z_data.shopname}}</view>
+        </navigator>
+        <view>
+          <icon class="cur"></icon>
+          <icon class="cur"></icon>
+          <icon class="cur"></icon>
+          <icon class="cur"></icon>
+          <icon class="cur"></icon>
+        </view>
+        <view class='shopSubTitle'>营业时间：{{z_data.starttime}}</view>
+        <view class='shopSubTitle'>地址：{{z_data.address}}</view>
+      </view>
+      <view class='shopPhone' bindtap='z_phone' data-phone="{{z_data.phone}}">
+        <view class='btnPhone'></view>
+      </view>
+    </view>
+
+    <!-- 点击选项 -->
+    <view class='shopOption'>
+      <view wx:if="{{is_moudel.openTangshi == 1}}"> 
+        <navigator url="/pages/index_ts/index" hover-class="none">
+          <image src='../../images/templates/index_5/order.png'></image>
+          <view>到店点餐</view>
+        </navigator>
+      </view>
+      <view wx:if="{{is_moudel.openWaimai == 1}}">
+        <navigator url="/pages/index_wm/index" hover-class="none">
+          <image src='../../images/templates/index_5/takeOut.png'></image>
+          <view>外卖点餐</view>
+        </navigator>
+      </view>
+      <view>
+        <navigator url="/pages/pay/pay" hover-class="none">
+          <image src='../../images/templates/index_5/pay.png'></image>
+          <view>快速买单</view>
+        </navigator>
+      </view>
+      <view>
+        <navigator url="/pages/coupon/coupon" hover-class="none">
+          <image src='../../images/templates/index_5/coupon.png'></image>
+          <view>领优惠券</view>
+        </navigator>
+      </view>
+      <view bindtap="noOpenF">
+        <image src='../../images/templates/index_5/recommend.png'></image>
+        <view>大厨推荐</view>
+      </view>
+      <view bindtap="noOpenF">
+        <image src='../../images/templates/index_5/shop.png'></image>
+        <view>所有门店</view>
+      </view>
+      <view bindtap="noOpenF">
+        <image src='../../images/templates/index_5/brand.png'></image>
+        <view>品牌故事</view>
+      </view>
+      <view bindtap="noOpenF">
+        <image src='../../images/templates/index_5/friend.png'></image>
+        <view>推荐好友</view>
+      </view>
+    </view>
+
+    <!-- 门店照片 -->
+    <view class='shopPhoto'>
+      <view class="title">
+        <text>门店照片</text>
+      </view>
+      <view class="contentListSec">
+        <scroll-view  scroll-x="true" scroll-left="0" style='white-space:nowrap;'>
+            <view class="ListSec" wx:for="{{z_data.banners}}" wx:key="index"  bindtap="imgs" data-index="{{index}}">
+              <image src="{{item}}" bindtap="previewImage"></image>
+            </view>
+        </scroll-view>
+      </view>
+    </view>
+  </view>

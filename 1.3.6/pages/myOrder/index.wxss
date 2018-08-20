@@ -1,0 +1,53 @@
+page {
+    background: #f6f6f6;
+}
+.listnav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #f9f9f9;
+    height: 90rpx;
+    line-height: 90rpx;
+    border-bottom: 1rpx solid #d1d1d1;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    z-index: 99;
+}
+
+.navitem {
+    flex: 1 1 auto;
+    text-align: center;
+}
+
+.navitem text {
+    display: inline-block;
+    height: 87rpx;
+    padding: 0rpx 15rpx;
+}
+
+.navitem.active text {
+    border-bottom: 5rpx solid #fc4e4e;
+}
+.rp-undata-default {
+    padding-top: 236rpx;
+    text-align: center;
+}
+
+.rp-undata-default .undata-icon {
+    display: inline-block;
+    width: 110rpx;
+    height: 110rpx;
+    background: url('https://pic.repaiapp.com/pic/e7/78/3d/e7783d8e163d4c885f5ae06917be7e26fbb65fe0.png') center no-repeat;
+    background-size: cover;
+}
+
+.rp-undata-default .undata-txt {
+    margin-top: 48rpx;
+    font-size: 30rpx;
+    color: #767e88;
+    text-align: center;
+}
+
+@import "../DEMOTAB/DEMOTAB.wxss";

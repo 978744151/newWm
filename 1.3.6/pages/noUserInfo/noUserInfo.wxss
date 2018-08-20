@@ -1,0 +1,46 @@
+page {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.power-wapper {
+  padding-top: 400rpx;
+  text-align: center;
+  font-size: 28rpx;
+  position: relative;
+}
+
+.power-wapper .icon-on-power {
+  display: inline-block;
+  font-size: 140rpx;
+}
+
+.power-wapper .tip {
+  margin: 22rpx 0 40rpx;
+  padding: 0 100rpx;
+  color: #999;
+  line-height: 150%;
+}
+
+.power-wapper .btn {
+  display: inline-block;
+  height: 67rpx;
+  line-height: 67rpx;
+  border-radius: 4rpx;
+  background: #dc0d17;
+  color: #fff;
+  padding: 0 34rpx;
+  font-size: 30rpx;
+  width: 90%;
+}
+
+.img {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius:50%; 
+  position: absolute;
+  top: 47%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}

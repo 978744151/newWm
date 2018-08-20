@@ -1,0 +1,7 @@
+
+<view class="content">
+    <view class="rp-undata-default">
+        <view class="undata-icon"></view>
+        <view class="undata-txt">没有相关兑换记录</view>
+    </view>
+</view>

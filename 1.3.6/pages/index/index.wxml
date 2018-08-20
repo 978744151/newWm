@@ -1,0 +1,322 @@
+<import src="../templates/nodata/nodata.wxml" />
+<import src="../templates/loading/loading.wxml" />
+<import src="../templates/message/message.wxml" />
+<import src="../templates/dialog/dialog.wxml" />
+
+<template is="message" data="{{showMessage,messageContent}}"></template>
+<template is="loading" wx:if="{{isIndexLoad}}"></template>
+<template is="popover-dialog" data="{{dialog}}"></template>
+<block wx:if = "{{attrspec}}">
+  <view class="zzc_box"  catchtap='tapyy'>
+      <view class='zzc_content' catchtap ="mealtap" >
+          <view class="mealColor" hover-class="on" hover-stop-propagation="false">
+              <text>外卖点餐</text>
+          </view>
+          <view class="mealColor" hover-class="on" hover-stop-propagation="false">
+              <text>堂食自提</text>
+          </view>
+          <view class="mealColor" hover-class="on" hover-stop-propagation="false">
+              <text>自提点餐</text>
+          </view>
+      </view>
+  </view>
+</block>
+<block wx:if="{{!isIndexLoad}}">
+  <!--店铺展示图  -->
+  <navigator url="/pages/shopPhotos/shopPhotos" hover-class="none" class="imageGroup" data-photos="{{shopInfo.storeinfo.storethumbs}}">
+    <!-- <image mode="aspectFill" src="{{shopInfo.storeinfo.storethumbs[0].image}}"></image> -->
+    
+    <image mode="aspectFill" src="https://pic.repaiapp.com/static/jpg/20171229/18/1514543001312801102.jpg"></image>
+    <view class="imageText">
+      <view></view>
+      <text>共{{shopInfo.storeinfo.storethumbs.length}}张</text>
+    </view>
+  </navigator>
+  <!--店铺信息  -->
+  <view class="shop">
+    <navigator hover-class="none" url="/pages/shopDetail/index" class="shopInfo" bindtap="shopDet">
+      <view class="shopLogo">
+        <image src="{{z_data.shoplogo}}"></image>
+      </view>
+      <view class="shopDetail">
+        <view class="name">{{z_data.shopname}}
+          <image src='https://pic.repaiapp.com/static/png/20171228/17/1514452009441389954.png' style='width:117rpx;height:32rpx;margin-left:20rpx' wx:if="{{z_data.is_open==1}}"></image>
+          <image wx:else src='https://pic.repaiapp.com/static/jpg/20180703/18/1530613657024215757.jpg' style='width:117rpx;height:32rpx;margin-left:20rpx;border-radius:4rpx;'></image>
+        </view>
+        <view class="evaluate">
+          <view class="star">
+            
+          </view>
+          <text>{{z_data.sendType}}</text> ·
+          <text>{{z_data.arrivetime}}</text>分钟送达
+        </view>
+        <view class="timeSection">
+          <text class="icont-notice"></text>
+          <text class="bulletin-content">{{z_data.notice_info}}</text>
+        </view>
+      </view>
+    </navigator>
+    <!-- 公告栏 -->
+    <block wx:if="{{z_data.hasCx>0}}">
+    <!-- <block> -->
+      <view class="activity-box" style='background:transparent;'>
+        <view>
+          <swiper autoplay="{{autoplay}}" interval="{{interval}}" vertical="true" circular="true" class="act-swiper">
+            <block wx:for="{{z_data.cxinfo}}" wx:key="info">
+              <swiper-item>
+                <view class="activity overflow-ellipsis">
+                  <image src="{{item.icon}}"></image>
+                  <block>
+                    <text>{{item.info}}</text>
+                  </block>
+                </view>
+              </swiper-item>
+            </block>
+          </swiper>
+          <text class="act-Num">{{z_data.hasCx}}个活动</text>
+        </view>
+      </view>
+    </block>
+    <!-- 地址 -->
+    <view class="shop-address">
+      <view class="icont-map" bindtap="goMap"></view>
+      <view class="address" bindtap="goMap">
+        <view class="clamp2">
+            {{z_data.address}}
+        </view>
+      </view>
+      <view class="btn-group">
+        <view class="item-gps" bindtap="goMap">
+          <text class="icont-gps"></text>
+          <view class="txt">导航</view>
+        </view>
+        <view class="item-tel" bindtap="calling">
+          <text class="icont-tel"></text>
+          <view class="txt">电话</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--优惠券  -->
+  <view class="coupons" wx:if="{{couponCount > 0}}">
+    <!--多个优惠券  -->
+    <view class="couponMore" wx:if="{{couponCount>1}}">
+      <scroll-view scroll-x="{{true}}" style="height: 156rpx;">
+        <view class="couponList">
+          <!--active  -->
+          <view class="couponItem {{(item.is_has == 1 || reList[item.id] == 1) ? '' : 'active'}} {{(item.is_over == 1) ? 'over' : ''}} " wx:for="{{couponList}}" wx:key="index" data-isover="{{item.is_over}}" data-ishas="{{item.is_has}}" data-index="{{index}}" data-id="{{item.id}}"
+            bindtap="addCoupon">
+            <view class="box">
+              <view class="couponMoney">
+                <text>{{item.prefix_char}}</text>
+                <view>{{item.middle_char}}</view>
+                <text>{{item.suffix_char}}</text>
+              </view>
+              <view class="condition">{{item.used_description}}</view>
+            </view>
+            <view class="box-right" wx:if="{{item.is_has == 1}}"></view>
+            <block wx:else>
+              <view class="box-right" wx:if="{{item.is_over == 1}}"></view>
+              <view class="box-right" wx:else></view>
+            </block>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+    <!--1个优惠券  -->
+    <view class="couponOne" wx:if="{{couponCount == 1 && item.is_has !=1 }}" wx:for="{{couponList}}" wx:key="index" data-isover="{{item.is_over}}" data-ishas="{{item.is_has}}" data-index="{{index}}" data-id="{{item.id}}" bindtap="addCoupon">
+      <view class="left">
+        <view class="money">
+          <!--代金券 -->
+          <view class="couponTip" wx:if="{{item.card_type == 5 || item.card_type == 4}}">
+            <view>{{item.prefix_char}}</view>
+            <text>{{item.middle_char}}</text>
+            <text>{{item.suffix_char}}</text>
+          </view>
+          <!--通用券
+            <view class="comCoupon" wx:if="{{item.card_type == 4}}">
+              <image src="https://pic.repaiapp.com/static/png/20171205/13/1512451713278510257.png"></image>
+            </view>
+          </view>-->
+          <view class="info">
+            <view class="name" wx:if="{{item.card_type == 5}}">代金券</view>
+            <view class="name" wx:if="{{item.card_type == 4}}">折扣券</view>
+            <view class="useCondition">{{item.used_description}}</view>
+            <view class="time">{{item.time_description}}</view>
+          </view>
+        </view>
+        <view class="right">
+          <image src="https://pic.repaiapp.com/static/png/20171205/13/1512452555527494952.png"></image>
+          <view class="classname">
+            已领
+            <text>{{item.recive_count}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--导航  -->
+  <view class="shopNav">
+    <view class="nav">
+      <navigator hover-class="none" url="/pages/index_ts/index" class="common">
+        <view class="navIcon code-icont"></view>
+        <view class="navTitle">
+          <view>堂食</view>
+          <text>到店轻松点餐</text>
+        </view>
+      </navigator>
+      <navigator class="common" bindtap='goWm' url="/pages/index_wm/index">
+        <view class="navIcon wm-icont"></view>
+        <view class="navTitle">
+          <view>外卖</view>
+          <text>轻松一点 轻松就餐</text>
+        </view>
+      </navigator>
+    </view>
+    <view class="nav">
+      <navigator hover-class="none" url="/pages/index_zt/index" class="common">
+        <view class="navIcon integral-icont"></view>
+        <view class="navTitle">
+          <view>自提</view>
+          <text>到店轻松自提</text>
+        </view>
+      </navigator>
+      <navigator url="/pages/pay/pay" hover-class="none" class="common">
+        <view class="navIcon pay-icont"></view>
+        <view class="navTitle">
+          <view>买单支付</view>
+          <text>快速买单&储值支付</text>
+        </view>
+      </navigator>
+    </view>
+    <view class='nav'>
+      <navigator url="/pages/myVips/myVips" class="common" >
+        <view class="navIcon vip-icont"></view>
+        <view class="navTitle">
+          <view>会员中心</view>
+          <text>专属VIP特权</text>
+        </view>
+      </navigator>
+      <navigator hover-class="none" url="/pages/coupon/coupon"  class="common">
+        <view class="navIcon yuy-icont"></view>
+        <view class="navTitle">
+          <view>优惠券</view>
+          <text>查看你的优惠卷</text>
+        </view>
+      </navigator>
+    </view>
+  </view>
+
+  <!--  轮播图-->
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="rgba(233, 233, 233,.65)" indicator-active-color="#ebeceb" class="swiper">
+    <!-- <block wx:for="{{shopInfo.storebanner}}" wx:key="image"> -->
+      <block >
+      <swiper-item class="slideImage">
+        <navigator url="{{item.path}}" hover-class="none">
+          <!-- <image src="{{item.banner}}"> </image> -->
+          <image src="https://pic.repaiapp.com/static/png/20171218/11/1513568890901494997.png">
+            
+          </image>
+        </navigator>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <!-- 店长推荐 -->
+  <view class="recommend">
+    <view class="indexTitle">
+      <view>店长推荐
+        <text>({{shopInfo.storerecommend.counts}})</text>
+      </view>
+    </view>
+
+    <!--有推荐  -->
+    <view class="scrollLIst" wx:if="{{shopInfo.storerecommend.counts>0}}">
+      <scroll-view scroll-x="{{true}}" style="height: auto;" scroll-into-view="{{toView}}" scroll-with-animation="true">
+        <view class="goodsHandle">
+          <!-- <navigator url="/pages/code/code" hover-class="none" class="goodsBox" id="to-{{index}}" wx:for="{{shopInfo.storerecommend.list}}" wx:key="index"> -->
+          <view bindtap='shoptj' data-id = "{{item.id}}" data-price = "{{item.marketprice}}" hover-class="none" class="goodsBox" id="to-{{index}}" wx:for="{{shopInfo.storerecommend.list}}" wx:key="index">
+            <image src="{{item.thumb}}"></image>
+            <view class="name overflow-ellipsis">{{item.title}}</view>
+            <view class="price">￥{{item.marketprice}}起</view>
+          </view>
+        </view>
+      </scroll-view>
+      <text class="hintIcon" wx:if="{{isShowToViewBtn}}" bindtap="moveCommendView"></text>
+    </view>
+    <!--暂无推荐  -->
+    <view class="noReco" wx:else>
+      <image src="https://pic.repaiapp.com/pic/c1/15/02/c115027f0231796b8752467e16fa8a48372c901c.png?x-oss-process=image/resize,h_130,w_130"></image>
+      <view>该店铺还没推荐菜品，敬请期待~</view>
+    </view>
+  </view>
+  <!--用户评价  -->
+  <view class="appraise">
+    <view class="indexTitle">
+      <view>用户评价
+        <text>({{shopInfo.storecomment.allcounts}})</text>
+      </view>
+    </view>
+    <!--有评价  {{shopInfo.storecomment.allcounts>0}}-->
+    <view class="gather" wx:if="{{shopInfo.storecomment.allcounts>0}}">
+      <view class="goodRep">商家好评率
+        <text>{{shopInfo.storecomment.goodrate}}%</text>
+      </view>
+      <view class="appraiseState">
+        <view class="stateBox">
+          <image src="{{praise.yawp.img}}"></image>
+          <view>{{praise.yawp.name}}
+            <text>{{shopInfo.storecomment.bumancounts}}</text>
+          </view>
+        </view>
+        <view class="stateBox">
+          <image src="{{praise.common.img}}"></image>
+          <view>{{praise.common.name}}
+            <text>{{shopInfo.storecomment.yibancounts}}</text>
+          </view>
+        </view>
+        <view class="stateBox">
+          <image src="{{praise.ok.img}}"></image>
+          <view>{{praise.ok.name}}
+            <text>{{shopInfo.storecomment.manyicounts}}</text>
+          </view>
+        </view>
+        <view class="stateBox">
+          <image src="{{praise.supPraise.img}}"></image>
+          <view>{{praise.supPraise.name}}
+            <text>{{shopInfo.storecomment.chaozancounts}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="appraiseConBox">
+        <view class="appraiseCon" wx:for="{{commentList}}" wx:key="index">
+          <view class="userLogo">
+            <image src="{{item.headimg}}"></image>
+          </view>
+          <view class="detail">
+            <view class="name">
+              <view>{{item.nickname}}</view>
+              <text>{{item.dateline}}</text>
+            </view>
+            <view class="state">
+              <image src="{{item.star==1? praise.yawp.img:(item.star==2? praise.common.img:(item.star==3?praise.ok.img:praise.supPraise.img))}}"></image>
+              <text>{{item.star==1? praise.yawp.name:(item.star==2? praise.common.name:(item.star==3?praise.ok.name:praise.supPraise.name))}}</text>
+            </view>
+            <view class="content">{{item.content}}</view>
+            <view class="imgViewBox" wx:if="{{item.pics.length>0}}">
+              <image src="{{i}}" wx:for="{{item.pics}}" wx:key="index" data-picarr="{{item.pics}}" data-pic="{{i}}" wx:for-item="i" bindtap="imgView"></image>
+            </view>
+          </view>
+        </view>
+      </view>
+      <navigator class="appraiseMore" url="/pages/allPraise/allPraise" hover-class="none">查看全部评价</navigator>
+    </view>
+    <!--无评价  -->
+    <navigator url="/pages/praise/praise" hover-class="none" class="noGather" wx:else>
+      <image src="https://pic.repaiapp.com/pic/5d/c6/89/5dc68941e85b2e8c66881eab6b18d6a27f4055be.png?x-oss-process=image/resize,h_130,w_130"></image>
+      <view>还没用户给店铺评价，快去评价吧~</view>
+      <text></text>
+    </navigator>
+  </view>
+
+</block>

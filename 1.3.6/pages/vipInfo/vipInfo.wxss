@@ -1,0 +1,14 @@
+/* pages/vipDetail/vipDetail.wxss */
+page{
+    background: #fff;
+    padding: 35rpx 30rpx;
+    box-sizing: border-box;
+}
+.item{
+    line-height: 60rpx;
+    font-size: 28rpx;    
+}
+.item text{
+    color: #939393;
+    margin-right: 20rpx;
+}

@@ -1,0 +1,23 @@
+<import src="../../templates/loading/loading.wxml" />
+<template is="loading" wx:if="{{isLoad}}"></template>
+
+<block wx:if="{{flag==0 && !isLoad}}">
+    <view wx:for="{{myCouponData}}" wx:key="index" 
+    class="coupon  {{item.status=='disable'?'grayColor':'' || item.is_use=='y'?'grayColor':''}}  {{item.is_expire=='y'?'ygq':''}} {{item.is_use=='y'?'ysy':''}}" >
+        <view class="moneyBox">
+            <text>￥</text>
+            <text class="money">{{item.money}}</text>
+        </view>
+        <view class="fullMoney">
+            <text>{{item.text}}</text>
+            <text class="time">{{item.start_time}}至{{item.end_time}}</text>
+        </view>
+        <view>
+            <text wx:if="{{item.status!='disable' && item.is_use!='y'}}" class="useBtn" bindtap="{{item.status=='disable'?'':'readyUse' && item.is_use=='y'?'':'readyUse'}}">立即使用</text>
+            <text wx:else style='visibility:hidden;'>立即使用</text>
+
+        </view>
+        <image class="imgbox" src="https://pic.repaiapp.com/pic/27/b5/e8/27b5e89ed427d2a6b3fe4aec8005fbfa98689171.png" wx:if="{{item.is_new==1&&item.status=='enable'&&item.is_use=='n'}}"></image>
+    </view>
+</block>
+<view class="noCoupon" wx:if="{{flag==1}}">暂无优惠券</view>

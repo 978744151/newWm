@@ -1,0 +1,289 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.0.5",
+	"appid": "wxde1fa76ac32843a1",
+	"projectname": "%E6%96%B0%E7%89%88%E5%A4%96%E5%8D%96",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"miniprogram": {
+			"current": 18,
+			"list": [
+				{
+					"id": -1,
+					"name": "o",
+					"pathName": "pages/shopDetail/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "1",
+					"pathName": "pages/orderList/index",
+					"query": ""
+				},
+				{
+					"id": 2,
+					"name": "createOrder_1",
+					"pathName": "pages/createOrder_1/index",
+					"query": "youhui=0&reduction_id=&skuids="
+				},
+				{
+					"id": -1,
+					"name": "index",
+					"pathName": "pages/index_1/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "createOrder_1",
+					"pathName": "pages/createOrder/index",
+					"query": "youhui=0&reduction_id=&skuids="
+				},
+				{
+					"id": 5,
+					"name": "orderDetail",
+					"pathName": "pages/orderDetail/index",
+					"query": "orderid=24962"
+				},
+				{
+					"id": -1,
+					"name": "index2",
+					"pathName": "pages/index_2/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "oList",
+					"pathName": "pages/oList/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "order",
+					"pathName": "pages/orderDetail/index",
+					"query": "orderid=24962"
+				},
+				{
+					"id": -1,
+					"name": "11",
+					"pathName": "pages/orderDetail/index",
+					"query": "orderid=25097&pay_money=23.27"
+				},
+				{
+					"id": 10,
+					"name": "订单",
+					"pathName": "pages/oList/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "o",
+					"pathName": "pages/shopDetail/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "获取用户信息",
+					"pathName": "pages/noUserInfo/noUserInfo",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "自提",
+					"pathName": "pages/createOrder_zt/index",
+					"query": "youhui=1.00&reduction_id=1945&skuids=&hasReduction=true"
+				},
+				{
+					"id": -1,
+					"name": "自提详情",
+					"pathName": "pages/orderDetail/index",
+					"query": "orderid=89941"
+				},
+				{
+					"id": -1,
+					"name": "确认订单",
+					"pathName": "pages/createOrder_zt/index",
+					"query": "youhui=0&reduction_id=&skuids=&hasReduction=false&tableid=abc",
+					"scene": "1011"
+				},
+				{
+					"id": -1,
+					"name": "堂食",
+					"pathName": "pages/index_ts/index",
+					"query": "youhui=1.00&reduction_id=1945&skuids=&hasReduction=true",
+					"scene": "1011"
+				},
+				{
+					"id": -1,
+					"name": "sss",
+					"pathName": "pages/index_zt/index",
+					"query": ""
+				},
+				{
+					"id": 18,
+					"name": "外卖",
+					"pathName": "pages/index_wm/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "堂食",
+					"pathName": "pages/index_ts/index",
+					"query": "",
+					"scene": "1001"
+				},
+				{
+					"id": -1,
+					"name": "vip",
+					"pathName": "pages/vip/vip",
+					"query": "",
+					"scene": "1001"
+				},
+				{
+					"id": -1,
+					"name": "myVip",
+					"pathName": "pages/myVip/myVip",
+					"query": "",
+					"scene": "1001"
+				},
+				{
+					"id": 22,
+					"name": "vipDetail",
+					"pathName": "pages/vipDetail/vipDetail",
+					"query": "",
+					"scene": "1001"
+				},
+				{
+					"id": -1,
+					"name": "recharge",
+					"pathName": "pages/recharge/recharge",
+					"query": "",
+					"scene": "1001"
+				},
+				{
+					"id": 24,
+					"name": "自提确认订单",
+					"pathName": "pages/createOrder_zt/index",
+					"query": "youhui=0&reduction_id=&skuids=&hasReduction=undefined",
+					"scene": "1001"
+				},
+				{
+					"id": 25,
+					"name": "堂食确认订单",
+					"pathName": "pages/createOrder_ts/index",
+					"query": "youhui=0&reduction_id=&skuids=&hasReduction=undefined",
+					"scene": "1001"
+				},
+				{
+					"id": -1,
+					"name": "外卖确认订单",
+					"pathName": "pages/createOrder/index",
+					"query": "youhui=0&reduction_id=&skuids=&hasReduction=undefined",
+					"scene": "1001"
+				},
+				{
+					"id": -1,
+					"name": "订单详情",
+					"pathName": "pages/orderDetail/index",
+					"query": "orderid=111111",
+					"scene": "1001"
+				},
+				{
+					"id": -1,
+					"name": "1213",
+					"pathName": "pages/index/index",
+					"query": "",
+					"scene": "1011"
+				},
+				{
+					"id": -1,
+					"name": "myVips",
+					"pathName": "pages/myVips/myVips",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "优惠券",
+					"pathName": "pages/coupon/coupon",
+					"query": ""
+				},
+				{
+					"id": 31,
+					"name": "111111",
+					"pathName": "pages/index_ts/index",
+					"query": "name=1231&age=1222"
+				},
+				{
+					"id": 32,
+					"name": "111111",
+					"pathName": "pages/noUserInfo/noUserInfo",
+					"query": "name=123"
+				},
+				{
+					"id": -1,
+					"name": "111111",
+					"pathName": "pages/noUserInfo/noUserInfo",
+					"query": "name=1231&age=21"
+				},
+				{
+					"id": -1,
+					"name": "111111",
+					"pathName": "pages/noUserInfo/noUserInfo",
+					"query": "name=1231&age=中国"
+				},
+				{
+					"id": -1,
+					"name": "test",
+					"pathName": "pages/Atest/test",
+					"query": ""
+				},
+				{
+					"id": 36,
+					"name": "堂食",
+					"pathName": "pages/index_ts/index",
+					"query": "",
+					"scene": "1011"
+				},
+				{
+					"id": -1,
+					"name": "indexzt",
+					"pathName": "pages/index_zt/index",
+					"query": ""
+				},
+				{
+					"id": 38,
+					"name": "外卖",
+					"pathName": "pages/index_wm/index",
+					"query": ""
+				},
+				{
+					"id": 39,
+					"name": "shopdetail",
+					"pathName": "pages/shopDetail/index",
+					"query": "shopId=6"
+				}
+			]
+		}
+	}
+}

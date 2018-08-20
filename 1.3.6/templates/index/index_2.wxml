@@ -1,0 +1,94 @@
+<view class="index_2">
+
+  <view class="shop">
+    <view class="shopInfo" data-shopid="{{shopDet.shopid}}">
+    <view class="rp-flex align-center">
+      <navigator url="/pages/shopDetail/index" hover-class="none" class="rp-flex-item rp-flex part-one" bindtap="shopDet">
+        <view class="shopImg">
+          <image src="{{z_data.shoplogo}}"></image>
+        </view>
+        <view class="shopDes rp-flex-item">
+          <!--overflow-ellipsis  -->
+          <view class="shopDes-top" style=' position: relative;display:flex;align-items:center;'>
+            <view style='max-width:350rpx;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;'>{{z_data.shopname}}</view>
+
+            <image src='https://pic.repaiapp.com/static/png/20171228/17/1514452009441389954.png' style='width:117rpx;height:32rpx;margin-left:20rpx' wx:if="{{z_data.is_open==1}}"></image>
+            <image wx:else src='https://pic.repaiapp.com/static/jpg/20180703/18/1530613657024215757.jpg' style='width:117rpx;height:32rpx;margin-left:20rpx;border-radius:4rpx;'></image>
+          </view>
+          <view class="delivery">
+            <text>{{z_data.sendType}}</text> ·
+            <text>{{z_data.arrivetime}}</text>分钟送达
+          </view>
+          <view class="shop-bulletin ">
+            <view class="overflow-ellipsis">
+              <text class="icont-notice">公告</text>
+              <text class="bulletin-content">{{z_data.notice_info}}</text>
+            </view>
+          </view>
+        </view>
+      </navigator>
+    </view>
+    </view>
+    <!--活动区域-->
+    <block wx:if="{{z_data.hasCx>0}}">
+    <view class="activity-box" style='background:transparent;color:#fff'>
+      <view>
+        <swiper autoplay="{{autoplay}}" interval="{{interval}}" vertical="true" circular="true" class="act-swiper">
+          <block wx:for="{{z_data.cxinfo}}" wx:key="info">
+            <swiper-item>
+              <view class="activity overflow-ellipsis">
+                <image src="{{item.icon}}"></image>
+                <block>
+                  <text style='line-height:36rpx;'>{{item.info}}</text>
+                </block>
+              </view>
+            </swiper-item>
+          </block>
+        </swiper>
+        <text class="act-Num">{{z_data.hasCx}}个活动</text>
+      </view>
+    </view>
+    </block>
+  </view>
+
+  <view class="newindex-panel" style="position: relative;">
+    <view class="blank">
+          <navigator url="/pages/index_ts/index" hover-class="none" class="newindex-item order"  wx:if="{{is_moudel.openZiti == 1}}">
+            <view class="left-span">
+              <text class="name">到店点餐</text>
+            </view>
+        </navigator>
+      <navigator url="/pages/index_wm/index" hover-class="none" class="newindex-item takeout" wx:if="{{is_moudel.openWaimai == 1}}">
+        <view class="left-span">
+          <text class="name">外卖</text>
+        </view>
+      </navigator>
+      <navigator url="/pages/index_zt/index"  hover-class="none" class="newindex-item myorder" wx:if="{{is_moudel.openZiti == 1}}">
+        <view class="left-span">
+          <text class="name">自提</text>
+          <!-- <text class="tag" wx:if="{{z_data.ztOrder >= 0}}">{{z_data.ztOrder}}</text> -->
+        </view>
+      </navigator>
+      <navigator url="/pages/myVips/myVips" hover-class="none"  class="newindex-item coupon">
+        <view class="left-span">
+          <text class="name">会员中心</text>
+          <!-- <text class="tag" wx:if="{{z_data.userCoupon >= 0}}">{{z_data.userCoupon}}</text> -->
+        </view>
+      </navigator>
+      <navigator url="/pages/oList_ts/index"  hover-class="none" class="newindex-item myorder">
+        <view class="left-span">
+          <text class="name">订单</text>
+          <text class="tag" wx:if="{{z_data.userOrder  >= 0}}">{{z_data.userOrder}}</text>
+        </view>
+      </navigator>
+      <navigator url="/pages/coupon/coupon" hover-class="none" class="newindex-item coupon">
+        <view class="left-span">
+          <text class="name">优惠券</text>
+          <text class="tag" wx:if="{{z_data.userCoupon >= 0}}">{{z_data.userCoupon}}</text>
+        </view>
+      </navigator>
+      
+    </view>
+  </view>
+
+</view>

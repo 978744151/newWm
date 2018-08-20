@@ -1,0 +1,61 @@
+
+<view class="content">
+    <block>
+        <view class="card-wapper" style="padding-top: 48rpx;">
+            <view class="getcard" style="background:url(https://pic.repaiapp.com/pic/0e/0c/4f/0e0c4fc48ac055c5a439f32609593fdc86cde57d.png) no-repeat;background-size:cover;">
+                <view class="rp-flex" bindtap="linkCode">
+                    <view class="rp-flex-item rp-flex getcard-content">
+                        <image src="https://pic.repaiapp.com/pic/83/75/ec/8375ecb14e892ae00a78b557dc335f45ebedf571.logo" background-size="cover"></image>
+                        <view class="getcard-name rp-flex-item">
+                            <text class="f-s28">探鱼金鸡湖店</text>
+                            <text class="f-s24">普通会员</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="panle-isactive">
+            <view class="btn">激活会员卡</view>
+            <text class="tip">开卡享9.0折;消费送积分;更有积分抵扣;</text>
+        </view>
+        <view class="panle-list">
+            <view class="item">
+                <view class="rp-flex-item addr" bindtap="goMap">
+                    <view>探鱼金鸡湖店</view>
+                    <text class="litte">17.20千米 | 江苏省苏州市吴中区</text>
+                </view>
+                <text class="tel-icont" data-tel="{{vipInfo.shoptel}}" bindtap="calling"></text>
+            </view>
+            <navigator url="/pages/integral/integral" open-type="redirect" class="item" wx:if="{{vipInfo.isVip == 1}}">
+                <view class="rp-flex-item">积分商城</view>
+                <text class="iconfont icon-right-more"></text>
+            </navigator>
+            <navigator url="/pages/nearbyshop/nearbyshop" class="item">
+                <view class="rp-flex-item">适用门店</view>
+                <text class="iconfont icon-right-more"></text>
+            </navigator>
+            <!--         <view class="item">
+            <view class="rp-flex-item">创意产业园</view>
+            <text class="iconfont icon-right-more"></text>
+        </view> -->
+            <navigator url="/pages/vipdetail/vipdetail" class="item">
+                <view class="rp-flex-item">会员卡详情</view>
+                <text class="iconfont icon-right-more"></text>
+            </navigator>
+        </view>
+    </block>
+</view>
+<!--底部小店图标-->
+<view class="rp-foot">
+    <view class="img"></view>
+</view>
+<!-- <block>
+    <view class="bg_content">
+        <view class="bg_tk">
+            <view>本店暂未开放会员卡</view>
+            <view>如有不便敬请谅解</view>
+        </view>
+        <view class="bg_know" bindtap="reback">知道了</view>
+        <view class="bg_bg"></view>
+    </view>
+</block> -->

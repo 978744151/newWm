@@ -1,0 +1,110 @@
+<!-- index.wxml 商家详情 -->
+<view>
+    <view class="base-header-wapper">
+        <view class="rp-flex">
+            <view class="logo">
+                <image src="{{shopData.logo}}"></image>
+            </view>
+            <view class="rp-flex-item">
+                <text class="title">{{shopData.name}}</text>
+                <view class="dd-tip">
+                    <text class="send-tag">{{shopData.sendType}}</text>
+                    月销售{{shopData.saleNum}}单
+                </view>
+                <view class="other-tip">
+                    <text class="mar-l0">{{shopData.sendTip}}</text>
+                    |
+                    <text>{{shopData.sendTimer}}分钟送达</text>
+                    |
+                    <text>距离你{{shopData.dis}}</text>
+                </view>
+            </view>
+        </view>
+        <view class="notice-wapper">
+            <view class="item border-t-none">配送:{{shopData.sendType}}</view>
+            <view class="item rp-flex">
+                <view>公告:</view>
+                <view class="rp-flex-item">{{shopData.notice}}</view>
+            </view>
+        </view>
+    </view>
+    <!--活动区域-->
+    <block wx:if="{{acData.vouchers || acData.reduction}}">
+        <view class="activity-box">
+            <text class="activity-tit">活动与服务</text>
+            <view class="activity" wx:if="{{acData.reduction!=''}}">
+                <image src="https://pic.repaiapp.com/pic/e7/50/80/e750807744c2f2ceb80d8d5000ba2dbe2f01ab09.png"></image>
+                <text wx:for="{{acData.reduction._info}}" wx:for-item="i" wx:key="index">满{{i.full_money}}减{{i.reduction_money}}{{acData.reduction._info.length==index+1?'':','}}</text>
+            </view>
+            <view class="activity" wx:if="{{acData.vouchers!=''}}">
+                <image src="https://pic.repaiapp.com/pic/0b/98/62/0b98628ea0dc7961d0d8e74ca641a12822ddc314.png"></image>
+                <text>活动共有{{acData.vouchers.length}}张优惠券</text>
+            </view>
+        </view>
+    </block>
+    <!--活动区域结束-->
+    <view class="rp-panel">
+        <view class="shop-title">商家信息</view>
+        <view class="rp-list-group rp-flex align-center" bindtap="goMap">
+            <view class="iconfont icon-map"></view>
+            <view class="rp-flex-item">地址：{{shopData.address}}</view>
+        </view>
+        <view class="rp-list-group">
+            <text class="iconfont icon-timer"></text>
+            营业时间：{{shopData.shopHours}}
+        </view>
+        <view class="rp-list-group rp-flex" data-tel="{{shopData.tel}}" bindtap="showSheetTel">
+            <view class="rp-flex-item">
+                <text class="iconfont icon-phone"></text>
+                商家电话
+            </view>
+            <text class="iconfont icon-right-more"></text>
+        </view>
+        <view class="rp-list-group rp-flex bb-none" 
+        wx:if='{{shopData.aptitudeImg!="" && shopData.aptitudeImg!=null && shopData.aptitudeImg!=undefined}}' data-src="{{shopData.aptitudeImg}}" bindtap="showaptitudeImage">
+            <view class="rp-flex-item">
+                <text class="iconfont icon-aptitude"></text>
+                营业资质
+            </view>
+            <text class="iconfont icon-right-more"></text>
+        </view>
+    </view>
+    <view class="rp-panel mar-b0">
+        <view class="shop-title">商家实景</view>
+        <view class="shop-images-blank">
+            <view class="clearfix">
+                <view class="rp-g-3" wx:for="{{shopData.shopImgs}}" wx:key="index">
+                    <view class="padd-lr11">
+                        <image class="image-mode" src="{{item}}" data-src="{{item}}" bindtap="previewImage"></image>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<!--技术支持  bindtap="jishu"-->
+ <view  class="footerimg" bindtap="contact">
+    <image src="https://pic.repaiapp.com/pic/ed/db/d9/eddbd9bf011b718194f284673c1064112ed13f03.png"></image>
+</view>
+<view style="text-align: center;font-size: 18rpx;color: #BDBDBD;padding: 20rpx;">软件版本 {{version}}</view> 
+<view class="bg" bindtap="bg" wx:if="{{zhichi}}">
+    <view class="changan">
+        <view class="leftfooter">
+            <image src="https://pic.repaiapp.com/pic/98/48/c5/9848c57498026afc90182b1afad58d4ee8b8e7ef.png" class="changanleft"></image>
+            <view class="classname">1.长按保存二维码</view>
+        </view>
+        <view class="leftfooter">
+            <image src="https://pic.repaiapp.com/pic/88/74/91/88749165e51a531ce9fa0f7986c5539fb7e77448.png" class="changanright"></image>
+            <view class="classname">2.扫一扫，定制小程序</view>
+        </view>
+
+    </view>
+    <view class="bgimg">
+        <image src="{{urls}}" class="erweima" bindtap="erweima"></image>
+        <view>点击二维码，长按并保存</view>
+        <view>定制专属小程序</view>
+        <image src="https://pic.repaiapp.com/pic/5a/17/41/5a1741be666f2131938cbc2c2a48042c51988c1c.png" class="xiaodian" ></image>
+    </view>
+
+
+</view>

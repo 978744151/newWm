@@ -1,0 +1,16 @@
+page{font-family:'微软雅黑';background: #f4f5f7;margin: 0;overflow-x: hidden;font-size:26rpx;padding: 18rpx;box-sizing: border-box;}
+.use-com{display: flex;justify-content: space-between;width: 100%;margin: 0 auto;background: #fff;border-radius: 4px;box-sizing: border-box;
+border: 1px solid #d3d3d3;}
+.unUse{height: 95rpx;line-height: 95rpx;padding: 0 33rpx;}
+.radio-img image{width: 40rpx;height: 40rpx;vertical-align: middle;}
+.red-text{height: 66rpx;line-height: 66rpx;color: #50505c;}
+.red-text text{color: #d93f3f;}
+.use{margin-bottom: 18rpx;padding: 60rpx 33rpx;}
+.use-money{display: flex;justify-content: flex-start;}
+.use-money .moneyBox{color:#d93f3f; margin-right: 33rpx;}
+.use-money .moneyBox .money{font-size:85rpx;}
+.fullMoney text{display: block;font-size:30rpx;color: #000;}
+.fullMoney .time{font-size: 26rpx;opacity: 0.68;margin-top:20rpx;}
+.use image{margin-top: 35rpx;}
+/*不能使用状态  */
+.grayColor .use-money .moneyBox,.grayColor .use-money .fullMoney text{color: #c2c0c0;}

@@ -1,0 +1,33 @@
+<template name="scaleDialog">
+    <view class="mask" style="visibility:{{!hiddenSacleDialog?'visible':'hidden'}};"></view>
+    <view class="scaleDialog" style="visibility:{{!hiddenSacleDialog?'visible':'hidden'}};" animation="{{animationData}}">
+        <view class="scale-wapper ">
+            <view class="img-wapper">
+                <image src="{{curfood.img}}" mode="scaleToFill"></image>
+                <view class="food-tip" wx:if="{{curfood.descgoods}}">
+                    <view class="food-txt">{{curfood.descgoods}}</view>
+                </view>
+            </view>
+            <view class="info">
+                <view class="title skumodal">
+                <!-- overflow-ellipsis  skuName-->
+                  <text class="{{curfood.has_type==false?'overflow-ellipsis':'skuName'}}">{{curfood.name}}</text>
+                   <text wx:if="{{curfood.has_type==true}}" class="moreSku {{crFlag=='b'?'skub':''}}{{crFlag=='r'?'skur':''}}{{crFlag=='o'?'skuo':''}}{{crFlag=='y'?'skuy':''}}{{crFlag=='g'?'skug':''}}">多规格</text>
+                </view>
+                <text class="tip">月销售{{curfood.sellcount}}份</text>
+                <view class="rp-flex align-center">
+                    <view class="rp-flex-item item-money">
+                        <view class="money">
+                            <text>￥</text>
+                            <text class="f-s38">{{curfood.cost}}</text>
+                        </view>
+                        <text class="bigSize">/份</text>
+                    </view>
+                     <text wx:if="{{curfood.has_type==false}}" class="btn-cart {{crFlag=='m'?'btn-mohu':''}}{{crFlag=='b'?'':''}}{{crFlag=='r'?'btn-red':''}}{{crFlag=='o'?'btn-orange':''}}{{crFlag=='y'?'btn-yellow':''}}{{crFlag=='g'?'btn-green':''}}" data-zy="1" bindtap="listAdd" data-cateid="{{curfood.typeid}}" data-iid="{{curfood.id}}">加入购物车</text>
+                    <text wx:else class="btn-cart {{crFlag=='m'?'btn-mohu':''}}{{crFlag=='b'?'':''}}{{crFlag=='r'?'btn-red':''}}{{crFlag=='o'?'btn-orange':''}}{{crFlag=='y'?'btn-yellow':''}}{{crFlag=='g'?'btn-green':''}}" bindtap="tapAddCart" data-cateid="{{curfood.typeid}}" data-iid="{{curfood.id}}" bindtap="showSkuHandle">选择规格</text>
+                </view>
+            </view>
+        </view>
+        <text class="close-btn-icon" bindtap="closeSacleDialog"></text>
+    </view>
+</template>

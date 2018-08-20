@@ -1,0 +1,378 @@
+.z_input{
+  color: #999;
+}
+page {
+    background: #f3f5f7;
+    padding-bottom: 120rpx;
+}
+
+.panel {
+    width: 100%;
+    background-color: #fff;
+    margin-bottom: 20rpx;
+    overflow: hidden;
+   
+}
+/* .remark{margin-bottom: 120rpx;} */
+.line {
+    padding: 0 30rpx;
+    color: #666;
+    font-size: 28rpx;
+    line-height: 80rpx;
+    height: 80rpx;
+    border-bottom: 2rpx solid #ebeded;
+    position: relative;
+}
+
+.fr {
+    float: right;
+}
+.inputscan{
+	background: #eeeeee;
+	padding: 0 10rpx;
+	border-radius: 4rpx;
+    width: 320rpx;
+}
+.Imgscan{
+	position: absolute;
+	right: 40rpx;
+	width: 24px;
+	height: 24px;
+	z-index: 99;
+}
+
+.pr20 {
+    padding-right: 20rpx;
+}
+
+.cell-more {
+    position: relative;
+    padding-right: 50rpx;
+}
+
+.cell-more:after {
+    content: " ";
+    height: 12rpx;
+    width: 12rpx;
+    border-width: 4rpx 4rpx 0 0;
+    border-color: #C8C8CD;
+    border-style: solid;
+    -webkit-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+    transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+    top: -4rpx;
+    position: absolute;
+    top: 50%;
+    margin-top: -8rpx;
+    right: 24rpx;
+}
+
+.order-address {
+    background-image: url(http://xd.repai.com/templates/m7/public/wxsite/images/bg2.png);
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.order-address .content {
+    /*line-height: 50rpx;*/
+    padding: 30rpx 0rpx 40rpx 30rpx;
+    position: relative;
+    color: #666;
+    font-size: 28rpx;
+}
+
+.order-address .content .content-top {
+    margin-bottom: 10rpx;
+}
+
+.order-address .content .content-top .name {
+    padding-right: 16rpx;
+}
+
+.order-address .content .address {
+    display: block;
+    font-size: 28rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    /*padding-left: 30rpx;*/
+}
+
+.cart-info .shop-info .logo {
+    width: 50rpx;
+    height: 50rpx;
+    position: relative;
+    top: 15rpx;
+    margin-right: 10rpx;
+    border: 1px solid #ddd;
+}
+
+.cart-items {
+    height: 100%;
+}
+
+.cart-items .cart-items-list {
+    border-bottom: 1rpx solid #ebeded;
+}
+
+.cart-items .cart-items-list .cart-item {}
+
+.cart-items .cart-items-list .cart-item .name {
+    width: 75%;
+    display: inline-block;
+    position: relative;
+}
+ .cart-items .cart-items-list .cart-item .name.last {
+   margin-bottom: 20rpx;
+} 
+.cart-items .cart-items-list .cart-item .name .skuClass{
+  position:absolute;
+  left: 0;
+  top: 35rpx;
+  color: #919191;
+  font-size: 24rpx;
+}
+.cart-items .cart-items-list .cart-item .num {
+    width: 10%;
+    display: inline-block;
+    text-align: center;
+}
+
+.cart-items .cart-items-list .cart-item .price {
+    width: 15%;
+    display: inline-block;
+    text-align: right;
+}
+
+.cart-items .cart-item-total {
+    text-align: right;
+}
+
+.shop-cart {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 50;
+    width: 100%;
+    height: 96rpx;
+    box-shadow: 0 -8rpx 12rpx 0 #ddd;
+}
+
+.shop-cart .content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    background: #fff;
+    font-size: 0;
+    color: #292929;
+}
+
+.shop-cart .content .content-left {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    padding-left: 20rpx;
+}
+.shop-cart .content .mohubg1{background: url('https://pic.repaiapp.com/pic/91/f3/dc/91f3dc931709b00a7d7ca02a7fd5f822e5a706c1.png')no-repeat center center/cover;}
+
+.shop-cart .content .content-left .cart-status-wrapper {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    top: -20rpx;
+    margin: 0 24rpx;
+    padding: 12rpx;
+    width: 112rpx;
+    height: 112rpx;
+    box-sizing: border-box;
+    border-radius: 50%;
+    background: #141d27;
+}
+.shop-cart .content .content-left .mohubg2{ background: #51504e;box-shadow: none; }
+
+.shop-cart .content .content-left .cart-status-wrapper .cart-status {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.shop-cart .content .content-left .cart-status-wrapper .num {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 48rpx;
+    height: 32rpx;
+    line-height: 32rpx;
+    text-align: center;
+    border-radius: 36rpx;
+    font-size: 18rpx;
+    font-weight: 700;
+    color: #fff;
+    background: #f01414;
+    box-shadow: 0 8rpx 16rpx 0 rgba(0, 0, 0, 0.4);
+}
+
+.shop-cart .content .content-left .price {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 24rpx;
+    line-height: 48rpx;
+    box-sizing: border-box;
+    font-size: 32rpx;
+}
+.shop-cart .content .content-left .mohubg4{color: #fff;}
+.shop-cart .content .content-left .desc {
+    display: inline-block;
+    vertical-align: top;
+    margin: 24rpx 0 0 12rpx;
+    line-height: 48rpx;
+    font-size: 28rpx;
+    color: #646464;
+}
+.shop-cart .content .content-left .mohubg6{color: #b4b4b4}
+.shop-cart .content .content-right {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 210rpx;
+    flex: 0 0 210rpx;
+    width: 210rpx;
+}
+
+.shop-cart .content .content-right .pay {
+    height: 96rpx;
+    line-height: 96rpx;
+    text-align: center;
+    font-size: 24rpx;
+    font-weight: 700;
+    background: #2b333b;
+    display: block;
+}
+
+.shop-cart .content .content-right .gopay {
+    color: #fff;
+    background: #31a6f6;
+    height: 96rpx;
+    line-height: 96rpx;
+    font-size:32rpx;
+    display: block;
+    text-align: center;
+    font-weight: bolder;
+}
+
+.shop-cart .content .content-right .bgorange {
+    background: #ff8855;
+}
+.shop-cart .content .content-right .bgyellow {
+    background: #f4c744;
+    color: #383838;
+}
+.shop-cart .content .content-right .bggreen {
+  background: #09ba08;
+}
+.shop-cart .content .content-right .bgred{
+  background: #ff4445;
+}
+.shop-cart .content .content-right .mohubg3{
+    background: #d93f3f;
+}
+.shop-cart .content .content-right .canps{
+    background: #aeaeae!important;
+}
+.r-orgin {
+    color: #ff4021;
+    font-weight: bold;
+}
+.r-orgin.mohubg5{color: #fff;}
+.sendTimer {
+    margin-top: 20rpx;
+    position: relative;
+}
+.mohubg5{color: #343234;}
+.sendTimer::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width:6rpx;
+    height: 100%;
+    background: #31a6f6;
+}
+.send-orange:after{
+ background: #ff8855;
+}
+.send-yellow:after{
+ background: #f4c744;
+}
+.send-green:after{
+ background: #09ba08;
+}
+.send-red:after{
+ background: #ff4445;
+}
+
+.color-main {
+    color: #31a6f6;
+}
+.color-orange {
+    color: #ff8855;
+}
+.color-yellow {
+    color: #f4c744;
+}
+.color-green {
+    color: #09ba08;
+}
+.color-red {
+    color: #ff4445;
+}
+
+
+button::after{
+    content: none;
+}
+
+.map{
+    width: 50rpx;
+    align-items: center;
+    align-content:center;
+}
+
+.map .iconfont{
+    display: block;
+
+}
+
+/*可用红包  */
+.redpacket .hb{float: right;padding: 0rpx 20rpx;border-radius: 4px;background: #ee4f01;color: #fff;height: 46rpx;line-height: 46rpx;margin-top: 15rpx;margin-right: 30rpx;}
+.redpacket .noyhj{float: right;padding: 0rpx 20rpx;color: #666;height: 50rpx;line-height: 50rpx;margin-top: 15rpx;}
+.hbjian{color: #ee4f01;float: right;margin-right: 20rpx;}
+.hb-line{padding: 0;}
+.cell-more2{padding-right: 0;}
+.cell-more2::after{right: -5rpx;}
+.redpacket .hbGray{background: #bcbbbb;}
+.new-right{
+  position: relative;
+  width: 300rpx;
+  height: 50rpx;
+  background-color: #eee;
+  display: flex;
+  align-items: center;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  font-size: 28rpx;
+}
+.new-right view{
+  position: relative;
+  width: 38rpx;
+  height: 35rpx;
+  background-image: url('https://pic.repaiapp.com/static/png/20180613/11/1528859078295295153.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.new-right input{
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}

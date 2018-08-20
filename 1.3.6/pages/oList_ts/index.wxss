@@ -1,0 +1,429 @@
+page {
+  background: #f4f4f4;
+  color: #333;
+}
+.z_line{
+  width: 200rpx;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  /* height: 1rpx; */
+  border: 1rpx #999 solid;
+  
+}
+.corder-tab {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  background: #fff;
+  color: #000;
+  border-top:0.1rpx solid #f5f5f5;
+}
+
+.corder-tab-list {
+  border-bottom: 3rpx solid #fff;
+  font-size: 30rpx;
+  line-height: 80rpx;
+  height: 80rpx;
+  box-sizing: border-box;
+}
+
+.corder-tab-list.active {
+  color: #bf9b79;
+  border-bottom: 3rpx solid #bf9b79;
+}
+.panel {
+    width: 100%;
+    background-color: #fff;
+    margin-bottom: 20rpx;
+    overflow: hidden;
+    color: #999;
+}
+
+.cell {
+    margin: 0 0 0 30rpx;
+    color: #666;
+    font-size: 30rpx;
+    line-height: 80rpx;
+    border-bottom: 2rpx solid #ebeded;
+    position: relative;
+}
+
+.line {
+    padding: 0 30rpx;
+    color: #666;
+    font-size: 28rpx;
+    line-height: 90rpx;
+    height: 90rpx;
+    border-bottom: 1rpx solid #ebeded;
+}
+
+.btn {
+    border: 2rpx solid #ff6e6e;
+    border-radius: 8rpx;
+    line-height: 56rpx;
+    font-size: 26rpx;
+    padding: 0rpx 16rpx;
+    color: #666666;
+    height: 56rpx;
+    display: block;
+    width: 110rpx;
+    text-align: center;
+    color: #ff6e6e;
+}
+
+.more:after {
+    content: " ";
+    height: 16rpx;
+    width: 16rpx;
+    border-width: 2rpx 2rpx 0 0;
+    border-color: #C8C8CD;
+    border-style: solid;
+    -webkit-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+    transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+    position: absolute;
+    left: 30rpx;
+    top: -4rpx;
+    position: absolute;
+    top: 50%;
+    margin-top: -19rpx;
+}
+
+.order-list {
+    padding-left: 30rpx;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.order-list .order-info {
+    height: 128rpx;
+}
+
+.order-list .order-info .logo {
+    width: 64rpx;
+    height: 64rpx;
+    padding: 32rpx 32rpx 32rpx 2rpx;
+    display: inline-block;
+}
+
+.order-list .order-info .logo image {
+    width: 100%;
+    height: 100%;
+}
+
+.order-list .order-info .order-shop {
+    display: inline-block;
+    font-size: 30rpx;
+    width: calc(100% - 98rpx);
+    color: #333333;
+    border-bottom: 1px solid #ebeded;
+    padding: 18rpx 0;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.order-info .order-shop .top .name {
+    max-width: 332rpx;
+    min-width: 20rpx;
+    height: 38rpx;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.order-info .order-shop .top .more {
+    position: relative;
+    width: 1rpx;
+    height: 1rpx;
+    display: inline-block;
+}
+
+.order-info .order-shop .top .status {
+    position: absolute;
+    right: 30rpx;
+    font-size: 28rpx;
+    color: #808080;
+}
+
+.order-list .order-info .order-shop .time {
+    font-size: 20rpx;
+    color: #a2a2a2;
+}
+
+.order-list .order-foods {
+    padding-left: 95rpx;
+    color: #949494;
+    font-size: 25rpx;
+}
+
+.order-list .order-foods .price {
+    color: #3d3d3d;
+    font-weight: bolder;
+    position: absolute;
+    right: 30rpx;
+}
+
+.order-list .action {
+    position: relative;
+}
+
+.order-list .action .listBtn {
+    display: inline-block;
+    float: right;
+    margin-top: 15rpx;
+}
+
+.list-loding-info {
+    height: 75rpx;
+    text-align: center;
+    line-height: 75rpx;
+    font-size: 26rpx;
+    background-color: #fafafa;
+}
+
+.list-refresh-info {
+    height: 75rpx;
+    text-align: center;
+    line-height: 75rpx;
+    font-size: 26rpx;
+    background-color: #fafafa;
+    position: absolute;
+    top: -75rpx;
+}
+
+.order-wapper {
+    background: red;
+}
+
+
+page {
+    background: #f3f5f7;
+    width: 100%;
+}
+
+.panel {
+    width: 100%;
+    background-color: #fff;
+    margin-bottom: 20rpx;
+    overflow: hidden;
+    color: #999;
+}
+
+.cell {
+    margin: 0 0 0 30rpx;
+    color: #666;
+    font-size: 30rpx;
+    line-height: 80rpx;
+    border-bottom: 2rpx solid #ebeded;
+    position: relative;
+}
+
+.line {
+    padding: 0 30rpx;
+    color: #666;
+    font-size: 28rpx;
+    line-height: 90rpx;
+    height: 90rpx;
+    border-bottom: 1rpx solid #ebeded;
+}
+
+.btn {
+    border: 2rpx solid #ff6e6e;
+    border-radius: 8rpx;
+    line-height: 56rpx;
+    font-size: 26rpx;
+    padding: 0rpx 16rpx;
+    color: #666666;
+    height: 56rpx;
+    display: block;
+    width: 110rpx;
+    text-align: center;
+    color: #ff6e6e;
+}
+
+.more:after {
+    content: " ";
+    height: 16rpx;
+    width: 16rpx;
+    border-width: 2rpx 2rpx 0 0;
+    border-color: #C8C8CD;
+    border-style: solid;
+    -webkit-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+    transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+    position: absolute;
+    left: 30rpx;
+    top: -4rpx;
+    position: absolute;
+    top: 50%;
+    margin-top: -19rpx;
+}
+
+.order-list {
+    padding-left: 30rpx;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.order-list .order-info {
+    height: 128rpx;
+}
+
+.order-list .order-info .logo {
+    width: 64rpx;
+    height: 64rpx;
+    padding: 32rpx 32rpx 32rpx 2rpx;
+    display: inline-block;
+}
+
+.order-list .order-info .logo image {
+    width: 100%;
+    height: 100%;
+}
+
+.order-list .order-info .order-shop {
+    display: inline-block;
+    font-size: 30rpx;
+    width: calc(100% - 98rpx);
+    color: #333333;
+    border-bottom: 1px solid #ebeded;
+    padding: 18rpx 0;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.order-info .order-shop .top .name {
+    max-width: 332rpx;
+    min-width: 20rpx;
+    height: 38rpx;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.order-info .order-shop .top .more {
+    position: relative;
+    width: 1rpx;
+    height: 1rpx;
+    display: inline-block;
+}
+
+.order-info .order-shop .top .status {
+    position: absolute;
+    right: 30rpx;
+    font-size: 28rpx;
+    color: #808080;
+}
+
+.order-list .order-info .order-shop .time {
+    font-size: 20rpx;
+    color: #a2a2a2;
+}
+
+.order-list .order-foods {
+    padding-left: 95rpx;
+    color: #949494;
+    font-size: 25rpx;
+}
+
+.order-list .order-foods .price {
+    color: #3d3d3d;
+    font-weight: bolder;
+    position: absolute;
+    right: 30rpx;
+}
+
+.order-list .action {
+    position: relative;
+}
+
+.order-list .action .listBtn {
+    display: inline-block;
+    float: right;
+    margin-top: 15rpx;
+}
+
+.list-loding-info {
+    height: 75rpx;
+    text-align: center;
+    line-height: 75rpx;
+    font-size: 26rpx;
+    background-color: #fafafa;
+}
+
+.list-refresh-info {
+    height: 75rpx;
+    text-align: center;
+    line-height: 75rpx;
+    font-size: 26rpx;
+    background-color: #fafafa;
+    position: absolute;
+    top: -75rpx;
+}
+
+.order-wapper {
+    background: red;
+}
+
+
+.bg-f3 {
+    background: #f3f5f7;
+}
+
+.padd-t27 {
+    /* padding-top: 26rpx; */
+}
+
+.order-wapper {
+    background: #fff;
+    padding: 30rpx 24rpx;
+    margin-bottom: 12rpx;
+}
+
+.order-wapper .image-wapper {
+    width: 94rpx;
+    margin-right: 23rpx;
+}
+
+.order-wapper .image-wapper>image {
+    width: 94rpx;
+    height: 94rpx;
+    border:1px solid #ddd;
+}
+
+.order-wapper .order-static {
+    width: 180rpx;
+}
+
+.order-wapper .order-static>text {
+    display: block;
+    font-size: 28rpx;
+    color: #2d2d2d;
+    text-align: right;
+}
+
+.order-wapper .title {
+    margin-bottom: 18rpx;
+}
+
+.order-wapper .title>.rp-flex-item, .order-wapper .title .more-icon {
+    font-size: 30rpx;
+    color: #2d2d2d;
+}
+
+.order-wapper .timer {
+    font-size: 23rpx;
+    color: #aaa;
+    margin-bottom: 20rpx;
+}
+
+.order-wapper .money {
+    font-size: 30rpx;
+    color: #2d2d2d;
+    margin-bottom: 22rpx;
+}
+
+.order-wapper .order-group-btn {
+    justify-content: flex-end;
+}

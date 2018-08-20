@@ -1,0 +1,121 @@
+<view class="index_3">
+  <!-- 店铺信息 -->
+  <view class='shopInfoBg'>
+    <view class='shopInfo'>
+      <navigator url="/pages/shopDetail/index" hover-class="none" class="rp-flex-item rp-flex part-one" bindtap="shopDet">
+        <view class='avatar'>
+          <image src='{{z_data.shoplogo}}'></image>
+        </view>
+        <view class='shopIntro'>
+          <view class='shopTitle'>{{z_data.shopname}}
+            <text wx:if="{{z_data.is_open==1}}">正在营业</text>
+            <text wx:else="{{z_data.is_open==1}}" style='background:red'>已打烊</text>
+          </view>
+          <view class='shopDelivery'>
+            <text>{{z_data.sendType}}</text> ·
+            <text>{{z_data.arrivetime}}</text>分钟送达
+          </view>
+          <view class='shopNotice'><text>公告</text>{{z_data.notice_info}}</view>
+        </view>
+      </navigator>
+    </view>
+    <view class='activityBg'>
+      <swiper autoplay="{{autoplay}}" interval="{{interval}}" vertical="true" circular="true" class="act-swiper ">
+          <block wx:for="{{z_data.cxinfo}}" wx:key="info">
+            <swiper-item>
+              <view class="activity overflow-ellipsis">
+                <image src="{{item.icon}}"></image>
+                <block>
+                  <text>{{item.info}}</text>
+                </block>
+              </view>
+            </swiper-item>
+          </block>
+        </swiper>
+      <view class='activityNum'>{{z_data.hasCx}}个活动</view>
+    </view>
+  </view>
+
+
+  <!-- 点击选项 -->
+  <view class='shopOption'>
+    <view class='tableBox'>
+      <view class='tableTd' wx:if="{{is_moudel.openTangshi == 1}}">
+        <navigator url="/pages/index_ts/index" hover-class="none">
+          <image src='../../images/templates/index_3/tanshi.png'></image>
+          <view>堂食</view>
+        </navigator>
+      </view>
+      <view class='tableTd'  wx:if="{{is_moudel.openWaimai == 1}}">
+        <navigator url="/pages/index_wm/index" hover-class="none">
+          <image src='../../images/templates/index_3/waimai.png'></image>
+          <view>外卖</view>
+        </navigator>
+      </view>
+      <view class='tableTd' >
+        <navigator url="/pages/pay/pay" hover-class="none">
+          <image src='../../images/templates/index_3/maidan.png'></image>
+          <view>买单</view>
+        </navigator>
+      </view>
+    </view>
+    <view class='tableBox' wx:if="{{is_moudel.openZiti == 1}}">
+      <view class='tableTd'>
+        <navigator url="/pages/index_zt/index" hover-class="none">
+            <image src='../../images/templates/index_3/youhuiquan.png'></image>
+            <view>自提</view>
+        </navigator>
+      </view>
+      <view class='tableTd'>
+        <navigator url="/pages/coupon/coupon" hover-class="none">
+          <image src='../../images/templates/index_3/youhuiquan.png'></image>
+          <view>优惠券</view>
+        </navigator>
+      </view>
+      <view class='tableTd'>
+      </view>
+    </view>
+  </view>
+
+  <!-- 商家信息 -->
+  <view class='businessInfo'>
+    <view class='title'>商家信息</view>
+    <view class='content'>
+      <view bindtap='z_phone' data-phone="{{z_data.phone}}">
+        <view class='infoHead'>商家电话</view>
+        <view class='infoBady'>{{z_data.phone}}</view>
+        <icon class='rightIcon'></icon>
+      </view>
+      <view bindtap='z_address' data-lat="{{z_data.lat}}" data-lng="{{z_data.lng}}" data-name="{{z_data.shopname}}" data-address="{{z_data.address}}">
+        <view class='infoHead'>商家地址</view>
+        <view class='infoBady'>{{z_data.address}}</view>
+        <icon class='rightIcon'></icon>
+      </view>
+      <view>
+        <view class='infoHead'>营业时间</view>
+        <view class='infoBady'>{{z_data.starttime}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 配送信息 -->
+  <view class='shipInfo'>
+    <view class='title'>配送信息</view>
+    <view class='content'>
+      <view>
+        <view class='shipIcon'>{{z_data.sendType}}</view>
+      </view>
+      <view class='infoBody'>
+        <view>{{z_data.psDetail}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 活动 -->
+  <view class='z_newuser'>
+    <view wx:for="{{z_data.cxinfo}}" class='cxinfo' wx:key="index">
+      <image src='{{item.icon}}'></image>
+      <view style='width:90%;'>{{item.info}}</view>
+    </view>
+  </view>
+</view>

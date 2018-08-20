@@ -1,0 +1,34 @@
+page{font-family:'微软雅黑';background: #f8f8f8;margin: 0;padding:0 0 20rpx 0;overflow-x: hidden;font-size:28rpx;}
+.coupon{display: flex;justify-content: space-around;width: 95%;margin: 19rpx auto 0;background-color: #fff;border-radius: 8rpx;padding: 60rpx 0;box-shadow: 0rpx 0rpx 12rpx rgba(0,0,0,0.1);overflow: hidden;position: relative;}
+.coupon .moneyBox{}
+.coupon .moneyBox text{font-size:30rpx;color: #d93f3f; }
+.coupon .moneyBox .money{font-size:85rpx;}
+.fullMoney text{display: block;font-size:32rpx;color: #000; }
+.fullMoney .time{font-size: 28rpx;opacity: 0.68;margin-top:24rpx;  }
+.useBtn{display: inline-block;font-size: 30rpx;color:#d93f3f;padding:0 18rpx;height:56rpx;line-height:56rpx;border: 2rpx solid #d93f3f;border-radius:28rpx; margin-top: 25rpx;  }
+.imgbox{position: absolute;width: 78rpx;height: 77rpx;left: -10rpx;top: -5rpx;}
+/*不能使用状态  */
+.grayColor .moneyBox text,.grayColor .fullMoney text,.grayColor .useBtn{color: #c2c0c0;}
+.grayColor .useBtn{border: 1px solid #c2c0c0;}
+.noCoupon{text-align: center;margin-top: 150rpx;color: #ccc;font-size: 40rpx;}
+
+
+.grayColor{
+    background-image: url('https://pic.repaiapp.com/static/png/20180711/15/1531295443412910049.png');
+    background-repeat: no-repeat;
+    background-size: 108rpx 96rpx;
+    background-position: right top;
+}
+.ysy{
+    background-image:('https://pic.repaiapp.com/static/png/20180710/11/1531192207997154956.png') ;
+    background-repeat: no-repeat;
+    background-size: 108rpx 96rpx;
+    background-position: right top;
+}
+.ygq{
+    background-image: url('https://pic.repaiapp.com/static/png/20180710/11/1531192181935645756.png');
+    background-repeat: no-repeat;
+    background-size: 108rpx 96rpx;
+    background-position: right top;
+}
+

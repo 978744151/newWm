@@ -1,0 +1,6 @@
+<block>
+    <view class="undata-wapper">
+        <view class="undata"></view>
+        <text class="undata-txt">暂无积分</text>
+    </view>
+</block>

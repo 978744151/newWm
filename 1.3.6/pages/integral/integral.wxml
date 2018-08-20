@@ -1,0 +1,21 @@
+<view class="content">
+    <view class="banner-img">
+       <image src="{{imgUrls}}"></image>
+    </view>
+    <!--我的积分-->
+    <view class="Integral">
+        <navigator hover-class="none" url="/pages/points/points" class="item">
+            <text class="icont-integral"></text>
+            <text>我的积分</text>
+            <text class="clr-y">{{points}}</text>
+        </navigator>
+        <navigator hover-class="none" url="/pages/itgexchangelist/itgexchangelist" class="item">
+            <text class="icont-exchange"></text>
+            <text>兑换记录</text>
+        </navigator>
+    </view>
+    <view class="undata-wapper">
+        <view class="icont-undata"></view>
+        <view class="undata-text">暂无可兑商品</view>
+    </view>
+</view>

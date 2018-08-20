@@ -1,0 +1,6 @@
+<!--nolocation 没授权定位页面 -->
+<view class="power-wapper">
+    <text class="iconfont icon-on-power"></text>
+   	<view class="tip">{{tiptxt}}</view>
+   	<text class="btn" bindtap="aginPower">{{btntxt}}</text>
+</view>

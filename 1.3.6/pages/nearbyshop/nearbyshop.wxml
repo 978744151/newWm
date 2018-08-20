@@ -1,0 +1,44 @@
+
+<view class="content">
+  <view class="nearsearch" >
+    <view class="search-icon"></view>
+    <view class="search-text">共找到6个附近的店</view>
+  </view>
+  <view class="nearbyshop" wx:for="{{list}}" wx:key="index">
+    <view class="nearby-box">
+      <view class="nearby-img">
+        <image src="{{item.logo}}" mode="aspectFill"></image>
+      </view>
+      <view class="nearby-news">
+        <view class="nearby-top">
+          <view class="nearby-text rp-flex-item">
+            <view class="shopname">{{item.title}}</view>
+            <view class="shop-say">
+              <view class="shop-xx">
+                <text class="xx-hua"></text>
+                <!--黄色星星-->
+                <text class="xx-hua"></text>
+                <text class="xx-hua"></text>
+                <text class="xx-hua"></text>
+                <!--灰色星星-->
+                <text class="xx-hua"></text>
+              </view>
+              <text class="shop-price">￥{{item.money}}/人</text>
+            </view>
+            <view class="shop-type">
+              <view class="shop-address">{{item.address}}</view>
+            </view>
+          </view>
+        </view>
+        <view class="nearby-right">
+          <view class="nearby-phone" data-tel="{{item.tel}}" bindtap="calling"></view>
+          <view class="shop-distance">{{item.distance}}km</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+ <!--底部小店图标-->
+        <view class="rp-foot">
+            <view class="img"></view>
+        </view>

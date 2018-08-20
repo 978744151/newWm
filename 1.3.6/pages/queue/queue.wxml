@@ -1,0 +1,70 @@
+<view class="content">
+    <!--店铺头部信息-->
+    <view class="shopname">
+        <view class="queue-logo" style="background-image:url(https://pic.repaiapp.com/pic/83/75/ec/8375ecb14e892ae00a78b557dc335f45ebedf571.logo);background-position: center;background-repeat: no-repeat;background-size:100% 100%">
+        </view>
+        <view class="qu-news">
+            <text class="shoptit">探鱼金鸡湖店</text>
+            <view class="shop-say">
+                <view class="shop-xx">
+                    <text class="xx-hua"></text>
+                    <!--黄色星星-->
+                    <text class="xx-hua"></text>
+                    <text class="xx-hua"></text>
+                    <text class="xx-hua"></text>
+                    <!--灰色星星-->
+                    <text class="xx-hua"></text>
+                </view>
+                <text class="shop-price">￥100/人</text>
+            </view>
+        </view>
+    </view>
+    <!--店铺头部信息end-->
+    <!--桌号信息-->
+    <view class="shoptable">
+        <view class="nowtable">
+            <view class="nowtable-left">
+                <view class="nowtable-p1">当前距离
+                    <text>17.20Km</text>
+                </view>
+                <view class="nowtable-p2">限制距离
+                    <text>0.0Km</text>
+                </view>
+            </view>
+            <block>
+                <view class="fartable" bindtap="">距离太远</view>
+            </block>
+            <view class="fartable" wx:if="{{queueInfo.queueStatus == 0}}">商家已暂停取号</view>
+        </view>
+        <view class="table-hint">
+            <text>·过号需重新取号,预估等待时间仅供参考；</text>
+            <text>·若取号成功后行程有变，请及时排队；</text>
+        </view>
+    </view>
+    <!--桌号信息end-->
+    <!--商家信息-->
+    <view class="business">
+        <view class="business-list" bindtap="calling">
+            <view class="phone-icon"></view>
+            <text class="bus-text">餐厅电话</text>
+            <view class="bus-detail"></view>
+        </view>
+        <view class="business-list">
+            <view class="area-icon"></view>
+            <text class="bus-text">地址：江苏省苏州市吴中区</text>
+        </view>
+        <view class="business-list">
+            <view class="time-icon"></view>
+            <text class="bus-text">营业时间：00:00-23:59</text>
+        </view>
+    </view>
+    <!--商家信息end-->
+    <!--店内实景-->
+    <view class="scene">
+        <view class="scene-tit">店内实景</view>
+        <view class="scene-img">
+            <image wx:for="{{sceneimg}}" src="{{item.image}}" wx:key="index" bindtap="preview" data-imgsrc="{{item.image}}" mode="aspectFill"></image>
+        </view>
+    </view>
+    <!--店内实景end-->
+</view>

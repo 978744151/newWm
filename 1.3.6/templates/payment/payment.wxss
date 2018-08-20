@@ -1,0 +1,175 @@
+/*================
+    确认支付
+ ================*/
+
+/* content */
+
+.confirmPayment {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 201;
+  transition: all 0.1s linear;
+}
+
+/*支付方式*/
+
+.payTypeContent {
+  height: 588rpx;
+  width: 100%;
+  background: #f5f5f7;
+  position: fixed;
+  bottom: 0;
+  z-index: 2007;
+  transition: transform 0.1s linear;
+}
+
+.payTypeTitle {
+  text-align: center;
+  line-height: 96rpx;
+  font-size: 32rpx;
+  color: #656565;
+  border-bottom: 1px solid #dadada;
+  position: relative;
+}
+
+.payTypeItem {
+  height: 145rpx;
+  border-bottom: 1px solid #dadada;
+  padding: 0 40rpx 0 102rpx;
+  background-image: url(https://pic.repaiapp.com/static/png/20180329/10/1522289271814304855.png);
+  background-repeat: no-repeat;
+  background-position: 32rpx center;
+  background-size: 52rpx auto;
+}
+
+.balance {
+  background-image: url(https://pic.repaiapp.com/static/png/20180329/10/1522291591523298101.png);
+  background-size: 50rpx auto;
+}
+
+.payTypeItem>view {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.payTypeItem .payTypeRight {
+  line-height: 1.5;
+}
+
+.payTypeItem .one {
+  font-size: 32rpx;
+}
+
+.payTypeItem .one text {
+  font-size: 26rpx;
+  color: #dd3232;
+  margin-left: 15rpx;
+}
+
+.payTypeItem .two {
+  font-size: 26rpx;
+  color: #656565;
+}
+
+.confirmPay {
+  height: 96rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36rpx;
+  color: #fff;
+  background: #d93f3f;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.noBalance {
+  background-image: url(https://pic.repaiapp.com/static/png/20180329/17/1522315748336405049.png);
+}
+
+.noBalance .one {
+  color: #787879;
+}
+
+.noBalance .one text {
+  color: #b7b7b7;
+}
+
+.noBalance .two {
+  color: #dd3232;
+}
+
+.payTypeItem .selected {
+  background-image: url(https://pic.repaiapp.com/static/png/20180329/09/1522288657601110051.png);
+  background-position: right center;
+  background-repeat: no-repeat;
+  background-size: 36rpx auto;
+}
+
+/* 过度*/
+
+.paymentShow {
+  opacity: 1;
+  visibility: visible;
+}
+
+.paymentHide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.openClass {
+  transform: translateY(0);
+}
+
+.closeClass {
+  transform: translateY(100%);
+}
+
+.confirmLeft {
+  transform: translateX(-100%);
+}
+
+.payTypeLeft {
+  transform: translateX(100%);
+}
+
+.payTypeRight {
+  transform: translateX(0);
+}
+
+ .is_checked {
+  height: 96rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36rpx;
+  color: #fff;
+  background: #aeaeae;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+  .normal {
+  height: 96rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36rpx;
+  color: #fff;
+  background: #d93f3f;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+} 

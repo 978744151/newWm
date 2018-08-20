@@ -1,0 +1,171 @@
+.scaleDialog {
+    position: absolute;
+    top:45%;
+    left: 50%;
+    z-index: 60;
+    -webkit-transform: scale(.3, .3);
+    transform: scale(.3, .3);
+    background: #fff;
+    width: 580rpx;
+    height: 790rpx;
+    padding: 24rpx;
+    margin: -419rpx 0 0 -314rpx;
+    border-radius: 10rpx;
+}
+
+
+.scaleDialog .img-wapper {
+    position: relative;
+    width: 580rpx;
+    height: 580rpx;
+    overflow: hidden;
+}
+
+
+
+.scaleDialog .img-wapper .food-tip {
+    position: absolute;
+    bottom: 0;
+    padding: 14rpx 0;
+    width: 100%;
+    color: #fff;
+    font-size: 24rpx;
+    z-index: 22;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.scaleDialog .img-wapper .food-tip .food-txt {
+    display: -webkit-flex;
+    display: flex;
+    min-height: 50rpx;
+    padding: 0 10rpx;
+    align-items: center;
+}
+
+.scaleDialog .img-wapper image {
+    width: 580rpx;
+    height: 580rpx;
+}
+
+.scaleDialog .title {
+    font-size: 32rpx;
+    color: #000;
+    margin-top: 32rpx;
+}
+.scaleDialog .skumodal{
+   display: flex;
+    justify-content: space-between;
+}
+.scaleDialog .skumodal .skuName{
+  width: 80%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+overflow: hidden;
+}
+.scaleDialog .skumodal .moreSku{
+  font-size:28rpx;
+  padding: 5rpx 10rpx;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+.scaleDialog .skumodal .moreSku.skub{
+color:#2297e5;
+border:1px solid #2297e5;
+}
+.scaleDialog .skumodal .moreSku.skuo{
+color:#ff8855;
+border:1px solid #ff8855;
+}
+.scaleDialog .skumodal .moreSku.skur{
+color:#ff4445;
+border:1px solid #ff4445;
+}
+.scaleDialog .skumodal .moreSku.skug{
+color:#09ba08;
+border:1px solid #09ba08;
+}
+.scaleDialog .skumodal .moreSku.skuy{
+color:#f4c744;
+border:1px solid #f4c744;
+}
+.scaleDialog .tip {
+    display: block;
+    font-size: 24rpx;
+    color: #939393;
+    margin: 14rpx 0;
+    line-height: 28rpx;
+}
+
+.scaleDialog .btn-cart {
+    display: block;
+    height: 78rpx;
+    line-height: 78rpx;
+    width: 250rpx;
+    text-align: center;
+    background: #2297e5;
+    color: #fff;
+    border-radius: 6rpx;
+    font-size: 32rpx;
+}
+.scaleDialog .btn-orange{
+  background: #ff8855;
+}
+.scaleDialog .btn-mohu{
+  background: #d93f3f;
+}
+.scaleDialog .btn-yellow{
+  background: #f4c744;
+  color: #383838;
+}
+.scaleDialog .btn-green{
+  background: #09ba08;
+}
+.scaleDialog .btn-red{
+  background: #ff4445;
+}
+
+.scaleDialog .money {
+    display: inline-block;
+    color: #ff5339;
+}
+
+.f-s38 {
+    font-size: 48rpx;
+}
+.bigSize{font-size: 28rpx;color:#939393; }
+.scaleDialog .money .f-s38 {
+    margin-left: 5rpx;
+    font-weight: 500;
+}
+
+.item-money {
+    font-size: 28rpx;
+}
+
+.mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .5);
+    z-index: 50;
+}
+
+.scale-fade {
+    -webkit-animation: scaleFade .8 ease-in-out;
+    animation: scaleFade .8 ease-in-out;
+}
+
+
+@keyframes scaleFade {
+    from {
+        transform: scale(.5);
+        -webkit-transform: scale(.5);
+    }
+    to {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+    }
+}
+.close-btn-icon{position: absolute;left: 50%;transform:translateX(-50%);bottom: -120rpx;width: 68rpx;height: 68rpx;background: url('https://pic.repaiapp.com/pic/2d/28/a5/2d28a5a3ae250e1fc9f8049f3023186330f18ab9.png') no-repeat;background-size: 68rpx 68rpx;z-index: 102;}

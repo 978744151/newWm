@@ -1,0 +1,224 @@
+page {
+    background: #f6f6f6
+}
+
+.content {
+    padding-bottom: 0;
+}
+
+.nearbyshop {
+    background: #fff;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.nearby-box {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+}
+
+.nearby-img {
+    width: 154rpx;
+    height: 154rpx;
+    border: 1rpx solid #e0e0e0;
+    margin: 25rpx 25rpx 25rpx;
+}
+
+.nearby-img image {
+    width: 154rpx;
+    height: 154rpx;
+}
+
+.nearby-news {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    width: 544rpx;
+    padding-right: 25rpx;
+}
+
+.nearby-top {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /*height: 204rpx;*/
+    flex: 1;
+    padding-top: 25rpx;
+}
+
+.nearby-text {
+    overflow: hidden;
+}
+
+.shopname {
+    font-size: 32rpx;
+    color: #000000;
+}
+
+.shop-say {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 12rpx 0;
+}
+
+.shop-price {
+    font-size: 28rpx;
+    color: #aaaaaa;
+}
+
+.xx-hua {
+    display: inline-block;
+    width: 23rpx;
+    height: 22rpx;
+    background: url(https://pic.repaiapp.com/pic/00/7f/ad/007fadce23f4d13d7642754611abbfdefb1cbd6c.png);
+    background-size: 100% 100%;
+    margin-right: 8rpx;
+}
+
+.xx-hui {
+    display: inline-block;
+    width: 23rpx;
+    height: 22rpx;
+    background: url(https://pic.repaiapp.com/pic/ad/4f/79/ad4f79f216fbc5c9fc05f7abb9c39097939e39b6.png);
+    background-size: 100% 100%;
+    margin-right: 8rpx;
+}
+
+.shop-type {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+}
+
+.shop-address {
+    font-size: 28rpx;
+    color: #aaaaaa;
+    flex: 1;
+    box-sizing: border-box;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+
+.shop-distance {
+    font-size: 28rpx;
+    color: #aaaaaa;
+    margin-left: 25rpx;
+}
+
+.storetype {
+    margin-left: 20rpx;
+}
+
+.nearby-phone {
+    width: 100rpx;
+    height: 100rpx;
+    background: url(https://pic.repaiapp.com/pic/94/38/f3/9438f314efab8d60d9ebef6c0cdf270a7a709e66.png) bottom right no-repeat;
+    background-size: 45rpx 46rpx;
+    margin: 20rpx 0;
+}
+
+.nearby-area {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    align-items: center;
+    height: 80rpx;
+    padding: 0 25rpx;
+}
+
+.area-icon {
+    width: 18rpx;
+    height: 25rpx;
+    background: url(https://pic.repaiapp.com/pic/98/34/f9/9834f918769b25adfa321720f889c2693a599d66.png);
+    background-size: 100% 100%;
+    margin-right: 15rpx;
+}
+
+.area-right {
+    width: 13rpx;
+    height: 26rpx;
+    background: url(https://pic.repaiapp.com/pic/9d/81/bb/9d81bba9f6db84625870e66d1312ae473d39b6b1.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.area-text {
+    flex: 1;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 26rpx;
+    color: #aaaaaa;
+}
+
+.nearsearch {
+    width: 100%;
+    height: 80rpx;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border-top: 1px solid #e8e8e8;
+    margin-bottom: 20rpx;
+}
+
+.search-icon {
+    width: 29rpx;
+    height: 29rpx;
+    background: url(https://pic.repaiapp.com/pic/e0/6e/34/e06e34b5a5e134b6032606a8909762f58a007adf.png);
+    background-size: 100% 100%;
+    margin-right: 15rpx;
+}
+
+.search-text {
+    font-size: 28rpx;
+    color: #7f7f7f;
+}
+
+.nearby-right {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 160rpx;
+    margin-bottom: 25rpx;
+}
+
+.nearbynone {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 25%;
+}
+
+.nearbynone-icon {
+    width: 130rpx;
+    height: 130rpx;
+    background: url(https://pic.repaiapp.com/pic/ba/3a/f8/ba3af83e24bc8029d243c97f6e8fb59c11eaecb1.png);
+    background-size: 100% 100%;
+}
+
+.nearbynone-text {
+    font-size: 24rpx;
+    color: #767e88;
+    margin-top: 25rpx;
+}
+/*小店图标*/
+.rp-foot {
+    text-align: center;
+    padding: 25rpx 0;
+    width: 100%;
+}
+
+.rp-foot .img {
+    width: 100%;
+    height: 84rpx;
+    background: url('https://pic.repaiapp.com/pic/05/25/31/052531731aeab17ee0b85a11c74a7da348631ee0.png') center no-repeat;
+    background-size: auto 84rpx;
+}

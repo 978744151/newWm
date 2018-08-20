@@ -1,0 +1,28 @@
+page{font-family:'微软雅黑';margin: 0;padding:0;overflow-x: hidden;font-size:28rpx;height: 100%;width: 100%;
+background-image: url('https://pic.repaiapp.com/pic/33/3b/ee/333bee800f08d99b5f6373051488590cd7a3fb2b.png');    
+background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center center;
+}
+.shopName{font-size:32rpx;line-height: 100rpx;color: #fff; text-align: center;}
+.getCoupon{color: #fff;text-align: center;margin-bottom: 40rpx;}
+.getCoupon text{color:#d93f3f;font-size: 30rpx; }
+.coupon{display: flex;justify-content: flex-start;width: 95%;margin: 0rpx auto 25rpx;background: #fff;border-radius: 8rpx;padding: 60rpx 0;}
+.coupon .moneyBox{padding-left: 80rpx;}
+.coupon .fullMoney{padding-left: 35rpx;}
+.coupon .moneyBox text{font-size:30rpx;color: #d93f3f; }
+.coupon .moneyBox .money{font-size:85rpx;font-weight: bold; }
+.fullMoney text{display: block;font-size:38rpx;color: #000; }
+.fullMoney .time{font-size: 25rpx;opacity: 0.68;margin-top:15rpx;  }
+.goBtn{width: 95%;margin: 10rpx auto 100rpx;height:80rpx;line-height: 80rpx;text-align: center;color: #fff;background: #d93f3f;border-radius: 8rpx; }
+
+
+
+
+
+
+
+
+
+
+

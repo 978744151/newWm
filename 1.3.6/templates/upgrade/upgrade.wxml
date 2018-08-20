@@ -1,0 +1,8 @@
+<template name="upgrade">
+   <view class="mask"></view>
+   <view class="upgrade">
+    <view class="upgrade-img"><image src="https://pic.repaiapp.com/pic/00/5a/63/005a639ff4c2e5b3be0e2da24737800198001d0f.png"></image></view>
+    <view class="upgrade_text">当前微信版本不支持小程序请更新到最新版微信</view>
+    <view class="upgrade-ok" bindtap="upgradeOk">知道了</view>
+   </view>
+</template>

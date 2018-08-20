@@ -1,0 +1,12 @@
+.rp-loading {
+    padding: 10rpx 0;
+    text-align: center;
+}
+
+.rp-loading .icon-load {
+    display: inline-block;
+    width: 60rpx;
+    height: 60rpx;
+    background: url('https://pic.repaiapp.com/pic/86/e6/3b/86e63b91e222dcd229dd3d96f5426577a522f124.gif') center no-repeat;
+    background-size: cover;
+}

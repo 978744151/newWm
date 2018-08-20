@@ -1,0 +1,57 @@
+<import src="../DEMOTAB/DEMOTAB.wxml"/>
+<template is="tabbar" data="{{tabbar}}"/>
+<view class="content">
+    <view class="mycenter-top">
+        <view class="img-wapper">
+            <image class="userinfo-avatar" src="https://pic.repaiapp.com/pic/37/c3/03/37c303c7ecbaf46f492370de2c4e268d721180c6.jpg" background-size="cover"></image>
+        </view>
+        <text class="userinfo-nickname">zy_web</text>
+        <text class="userinfo-jilu">已累计排队成功0次，消费0笔，总金额0.00元</text>
+        <view class="my-tab w100">
+            <view class="rp-flex align-center">
+                <navigator url="/pages/myOrder/index" hover-class="none" class="rp-flex-item border-left">
+                    <text class="order-icont"></text>
+                    <text>我的订单</text>
+                </navigator>
+                <navigator url="/pages/points/points" hover-class="none" class="rp-flex-item">
+                    <text class="money-icont"></text>
+                    <text>我的积分</text>
+                </navigator>
+            </view>
+        </view>
+    </view>
+    <view class="mycenterlist">
+        <navigator url="/pages/vip/vip" class="mycenterdiv" bindtap="linkVip">
+            <view class="icont icont-vip"></view>
+            <view class="list-text">会员中心</view>
+            <view class="list-hint">专属VIP特权</view>
+            <view class="list-right"></view>
+        </navigator>
+        <navigator url="/pages/integral/integral" class="mycenterdiv">
+            <view class="icont icont-page"></view>
+            <view class="list-text">积分商城</view>
+            <view class="list-hint">积分兑换好礼</view>
+            <view class="list-right"></view>
+        </navigator>
+    </view>
+    <block>
+        <view class="mycenterlist">
+            <view class="mycenterdiv" bindtap="clearcooki">
+                <view class="icont icont-clear"></view>
+                <view class="list-text">清除缓存</view>
+                <view class="list-hint">0M</view>
+                <view class="list-right"></view>
+            </view>
+            <view class="mycenterdiv">
+                <view class="icont icont-care"></view>
+                <view class="list-text">软件关于</view>
+                <view class="list-hint">1.0.0</view>
+            </view>
+        </view>
+    </block>
+    <!--底部小店图标-->
+    <view class="rp-foot">
+        <view class="img"></view>
+    </view>
+</view>
+

@@ -1,0 +1,26 @@
+<view class="unUse use-com" bindtap="unUseFuc" data-money="{{0}}">
+    <text>不使用红包</text>
+    <view class="radio-img">
+        <image wx:if="{{rShow}}" src="https://pic.repaiapp.com/pic/d7/8a/37/d78a37c72bf7b55aee269761f8120a957e8bd49b.png"></image>
+        <image wx:else src="https://pic.repaiapp.com/pic/ae/ff/31/aeff31a78a0278a96e7d2ca3679e16fd68f3d43d.png"></image>
+    </view>
+</view>
+<block>
+    <view class="red-text">有 <text>{{usableData.length}}</text> 张代金券可用</view>
+    <block>
+        <view wx:for="{{usableData}}" wx:key="id" data-id="{{index}}" data-money="{{item.money}}" data-vouchersid="{{item.id}}"  bindtap="{{item.is_use=='n'?'useCoupon':null}}">
+            <view class="use use-com {{item.is_use=='n'?'':'grayColor'}}">
+                <view class="use-money">
+                    <view class="moneyBox"><text>￥</text><text class="money">{{item.money}}</text></view>
+                    <view class="fullMoney">
+                        <text>{{item.text}}</text>
+                        <text class="time">{{item.start_time}}至{{item.end_time}}</text>
+                    </view>
+                </view>
+                <view class="radio-img" wx:if="{{item.is_use=='n'}}">
+                    <image src="{{vouchers_id==item.id?'https://pic.repaiapp.com/pic/d7/8a/37/d78a37c72bf7b55aee269761f8120a957e8bd49b.png':'https://pic.repaiapp.com/pic/ae/ff/31/aeff31a78a0278a96e7d2ca3679e16fd68f3d43d.png'}}"></image>
+                </view>
+            </view>
+        </view>
+    </block>
+</block>

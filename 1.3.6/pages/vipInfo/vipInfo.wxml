@@ -1,0 +1,14 @@
+<!--pages/vipDetail/vipDetail.wxml-->
+<!-- <view class='item'>
+    <text>特权说明</text>{{data.privilege}}
+</view>
+
+<view class='item'>
+    <text>有效日期</text>永久有效
+</view>
+<view class='item'>
+    <text space="ensp">电    话</text>{{data.userPhone}}
+</view> -->
+<view class='item'>
+    <text>使用须知</text>{{data.hint}}
+</view>

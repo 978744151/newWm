@@ -1,0 +1,74 @@
+<!--pages/pay/pay.wxml-->
+<import src="../../templates/loading/loading.wxml" />
+<template is="loading" wx:if="{{isLoadIndex}}"></template>
+<block wx:if="{{!isLoadIndex}}">
+    
+    <navigator open-type="switchTab" class="banner" url="/pages/index/index">
+        <image class="ban" src="https://pic.repaiapp.com/pic/fb/cd/f1/fbcdf130d18d3dc6a95fd4b243aee39aef26cae8.jpg">
+        </image>
+    </navigator>
+    <view class="title">
+        付款给：
+        <text>{{shopname}}</text>
+    </view>
+    <!--提示信息内容  -->
+    <view class="hint {{isTip?'':'fade-up'}}" hidden="{{isHidden}}">
+        {{hintInfo}}
+    </view>
+    <view class="moneyInfo">
+        <view class="totle">
+            <text class="totleText">消费总额</text>
+            <view class="totleInput rp-flex-item ">
+                <text>￥</text>
+                <input bindinput="bindInput" data-type="all" class="rp-flex-item" placeholder="询问店员后输入" placeholder-class="placeholderClass" type="digit" />
+            </view>
+        </view>
+        <view class="noDiscount" wx:if="{{!isSaleInput}}" bindtap="showSaleInput">
+            <image src="https://pic.repaiapp.com/pic/23/4c/91/234c91f20f9dc6132b4a7faab6faae2b1b891576.png"></image>
+            <text class="color-73">添加不参与优惠的金额</text>
+        </view>
+        <!--不参与优惠金额输入-->
+        <view class="totle noDisinput" wx:else>
+            <text class="totleText">不参与优惠的金额</text>
+            <view class="totleInput rp-flex-item">
+                <text style="display: block;">￥</text>
+                <input class="rp-flex-item" bindinput="bindInput" data-type="unsale" placeholder="询问店员后输入" placeholder-class="placeholderClass" type="digit" />
+            </view>
+        </view>
+        <view class="discount">
+            <view bindtap="showCoupon" class="discT clearfix">
+                <!--判断是否有优惠 显示  -->
+                <text>{{initSaleTitle}}</text>
+                <text class="minus" wx:if="{{yyh}}">减{{minus}}元</text>
+                <image src="https://pic.repaiapp.com/pic/27/25/32/2725322942e9b46c2010c084e56d6b627e8c4488.png"></image>
+            </view>
+            <view class="discB" style="color:{{isBgCc ? '#ccc' : '#000'}}">
+                <text class="sign">￥</text>
+                <text class="money">{{payNum}}</text>
+                <!--判断是否有优惠 显示  -->
+                <text class="yyh" wx:if="{{yyh}}">已优惠 ￥{{minus}}</text>
+            </view>
+        </view>
+        <view bindtap="validatePay" class="btn" style="background:{{isBgCc ? '#ccc' : '#1cad16'}}">
+            确认支付
+        </view>
+    </view>
+</block>
+<!--点击显示店铺是否有优惠信息  -->
+<view class="mark {{isHidde?'':'fade-into'}}"  style="visibility:{{!isHidde?'visible':'hidden'}};" catchtap="closeCoupon">
+</view>
+<view class="shopDiscount {{isHidde?'silder-down':'sider-up'}}" >
+    <text class="sTitle">店铺优惠</text>
+    <view class="discWraps">
+        <radio-group class="radio-group">
+            <label class="radio radioClass clearfix" wx:for="{{coupon}}" wx:key="index" data-selected="{{index}}" bindtap="radioChange">
+                <radio checked="{{selected == index ? true : false}}" class="rRight" value="{{item.name}}" disabled="{{couponNums == 0 ? true : false}}"></radio>
+                {{item.name}} {{item.discount}}
+            </label>
+        </radio-group>
+    </view>
+    <view bindtap="closeCoupon" class="closeBtn">
+        关闭
+    </view>
+</view>
+<!--结束  -->

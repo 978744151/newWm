@@ -1,0 +1,9 @@
+{
+    "extEnable": true,
+    "extAppid": "wx5af4d6c82dfb7cf4",
+    "ext": {
+        "shopId": 4277,
+        "isTest": 0,
+        "user_version":"1.4.0"
+    }
+}

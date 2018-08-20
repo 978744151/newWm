@@ -1,0 +1,123 @@
+
+.Vip{
+    background: #fff;
+    box-sizing: border-box;
+    padding-top: 40rpx;
+}
+/*会员卡  */
+.card{
+    width: 626rpx;
+    height: 377rpx;
+    background:url(https://pic.repaiapp.com/static/png/20180621/15/1529564737630151101.png) no-repeat center;
+    background-size: 100% 100%;
+    margin: 0 auto 80rpx auto;
+}
+.card_headImg{
+    width: 70rpx;
+    height: 70rpx;
+    border-radius: 50%;
+    background: #fff;
+    margin-right: 20rpx;
+}
+.noVip_userInfo{
+    padding: 36rpx 0 0 36rpx;
+    box-sizing: border-box;
+    display: flex;
+    color: #fff;
+    font-size: 28rpx;
+}
+.noVip_userInfo .name{
+    margin-top: 8rpx;
+}
+.noVip .openVip{
+    margin: 65rpx auto 0 auto;
+    width: 250rpx;
+    height: 68rpx;
+    border: 1px solid #fff;
+    border-radius: 5rpx;
+    color: #fefefe;
+    text-align: center;
+    line-height: 68rpx;
+    font-size: 32rpx; 
+}
+.yesVip{
+    position: relative;
+    height: 100%;
+    letter-spacing: 4rpx;
+}
+.yesVip_userInfo{
+    padding: 36rpx 0 0 36rpx;
+    box-sizing: border-box;
+    display: flex;
+    color: #fff;
+}
+.yesVip_userInfo .yesVip_text{
+    display: flex;
+    flex-direction: column;
+    font-size: 28rpx;
+    justify-content: space-around;
+}
+.yesVip_userInfo .yesVip_level{
+    font-size: 28rpx;
+    color: #f8dad7;
+}
+.balance{
+    color: #fff;
+    font-size: 22rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 46rpx;
+}
+.balance .balance_num{
+    font-size: 28rpx;
+    margin-top: 12rpx;
+}
+.yesVip_id{
+    position: absolute;
+    font-size: 32rpx;
+    color: #fefefe;
+    left: 36rpx;
+    bottom: 40rpx;
+}
+
+/*去首页点餐  */
+.goIndex{
+    width: 406rpx;
+    height: 78rpx;
+    border-radius: 5rpx;
+    border:1px solid #b2b2b2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    color: #333333;
+    font-size: 32rpx;
+    margin-bottom: 77rpx;
+}
+
+
+/*跳转链接  */
+.line{
+    height: 20rpx;
+    background: #f9f9f9;
+}
+.border-top{
+    border-top: 1px solid #dcdcdc;
+}
+.link_item{
+    padding: 0 35rpx;
+    height: 115rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 32rpx;
+    color: #222222;
+    border-bottom: 1px solid #dcdcdc;
+    box-sizing: border-box;
+}
+.link_item .back{
+    width: 16rpx;
+    height: 29rpx;
+}
+

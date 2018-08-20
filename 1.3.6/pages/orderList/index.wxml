@@ -1,0 +1,44 @@
+<!-- <scroll-view class="shop-foods bg-f3" scroll-y="true" style="height:{{scrollHeightT}}rpx;" lower-threshold="50" bindscrolltolower="loadMoreList" upper-threshold="50" bindscrolltoupper="refreshList"> -->
+<import src="../../templates/loading/loading.wxml" />
+<scroll-view class="shop-foods bg-f3" scroll-y="true" style="height:{{scrollHeightT}}rpx;" bindscrolltolower="loadMoreList" lower-threshold="50" bindscroll="moveView">
+    <!-- <template is="loading" wx:if="{{isUpper}}" data="{{loadtxt}}"></template> -->
+    <view class="padd-t27">
+        <block wx:for="{{orderList}}" wx:for-index="$index" wx:key="id">
+            <view class="order-wapper">
+                <view class="rp-flex" bindtap="topOrderInfo" data-orderid="{{item.id}}" data-type="{{item.ordertype}}">
+                    <view class="image-wapper">
+                        <image src="{{item.shoplogo}}"></image>
+                    </view>
+                    <view class="rp-flex-item">
+                        <view class="title rp-flex">
+                            <view class="rp-flex-item">{{item.det}}
+                                <text class="iconfont icon-right-more"></text>
+                            </view>
+                        </view>
+                        <view class="timer">
+                            下单时间：{{item.addTime}}
+                        </view>
+                        <view class="money">￥{{item.allcost}}</view>
+                    </view>
+                    <view class="order-static">
+                        <text>{{item.statusStr}}</text>
+                    </view>
+                </view>
+                <view class="order-group-btn rp-flex">
+                    <block wx:for="{{item.statusInfo.btn}}" wx:for-item="status" wx:key="id">
+                        <view class="rp-btn {{status.btnClass}}" bindtap="{{status.bindtap}}" data-phone="{{item.shopphone}}" data-totalprice="{{item.allcost}}" data-orderid="{{item.id}}" data-index="{{$index}}" wx:if="{{!status.lessTime}}">
+                            {{status.name}}
+                        </view>
+                        <view class="rp-btn {{status.btnClass}}" bindtap="{{status.bindtap}}" data-orderid="{{item.id}}" data-phone="{{item.shopphone}}" data-index="{{$index}}" wx:if="{{status.lessTime && timeArray[item.id].falg}}">
+                            {{timeArray[item.id].str}}
+                        </view>
+                    </block>
+                </view>
+            </view>
+        </block>
+        <template is="loading" wx:if="{{isMore}}" ></template>
+        <view class="list-loding-info" style="display:{{listIsEnd ? 'block' : 'none'}}">
+            <text>没有更多</text>
+        </view>
+    </view>
+</scroll-view>

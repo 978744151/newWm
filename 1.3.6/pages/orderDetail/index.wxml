@@ -1,0 +1,256 @@
+
+<payment data='{{payment}}' bindnowPay='nowPay'></payment>
+
+<view class="panel order-status">
+    <view class="logo">
+        <image src="{{orderInfo.order.shoplogo_77}}"></image>
+    </view>
+    <view class="status">{{orderInfo.order.statusInfo.statusStr}}</view>
+    <view class="des">{{orderInfo.order.statusInfo.msg}}</view>
+    <block>
+        <view class="order-group-btn order-detail">
+            <!--  <view wx:for="{{orderInfo.order.statusInfo.btn}}" wx:for-item="btn" wx:key="name" class="rp-btn {{btn.btnClass}} {{index == 0?'margin-l0':''}}" bindtap="{{btn.bindtap}}" data-orderid="{{orderInfo.order.id}}">
+                <text wx:if="{{btn.lessTime}}">{{timeArray[orderInfo.order.id].str}}</text>
+                <text wx:else >{{btn.name}}</text>
+            </view> -->
+            <block wx:for="{{orderInfo.order.statusInfo.btn}}" wx:for-item="status" wx:key="name">
+                <view class="rp-btn {{status.btnClass}} {{index == 0?'margin-l0':''}}" bindtap="{{status.bindtap}}" data-orderid="{{orderInfo.order.id}}" data-index="{{$index}}" wx:if="{{!status.lessTime}}" data-phone="{{orderInfo.order.shopphone}}">
+                    {{status.name}}
+                </view>
+                <view class="rp-btn {{status.btnClass}} {{index == 0?'margin-l0':''}} {{crFlag=='b'?'blue':''}}{{crFlag=='r'?'rred':''}}{{crFlag=='o'?'orange':''}}{{crFlag=='y'?'yellow':''}}{{crFlag=='g'?'green':''}}" bindtap="{{status.bindtap}}" data-orderid="{{orderInfo.order.id}}" data-index="{{$index}}" wx:if="{{status.lessTime && timeArray[orderInfo.order.id].falg}}" data-phone="{{orderInfo.order.shopphone}}">
+                    {{timeArray[orderInfo.order.id].str}}
+                </view>
+            </block>
+        </view>
+    </block>
+</view>
+ <!-- <view class="line" style='background-color:#fff;'>
+    <text class="name panel-title">订单信息</text>
+</view>  -->
+<!-- $buyerstatus= array(
+            '0'=>'等待支付',
+
+
+            '1'=>'等待商家接单',
+            '2'=>'订单已发货',
+
+
+            '3'=>'订单完成',
+
+
+            '4'=>'订单已取消',
+            '5'=>'订单已取消'
+        ); -->
+<!-- jieshu -->
+<!--取餐码 付钱之后-->
+ <view class='z_qc {{orderInfo.order.tcClass}}' wx:if="{{orderInfo.order.ordertype==6&&(orderInfo.order.status==1||orderInfo.order.status==2)}}">
+  <view class='z_left'>取餐码</view>
+  <view class='z_right'>
+    <view class='right_le'>
+      <view style='display:flex;align-items:center;'>
+        <text style='font-size:46rpx;'>{{orderInfo.order.code}}</text>
+        <view class='z_state'>已付款</view>
+      </view>
+      <view>凭此码至门店柜台取餐</view>
+    </view>
+    <image src='https://pic.repaiapp.com/static/png/20171228/20/1514465316067756102.png' bindtap='showimg'></image>
+  </view>
+</view> 
+ <view class='z_qc z_qc7' wx:if="{{orderInfo.order.ordertype==7&&(orderInfo.order.status==1||orderInfo.order.status==2)}}">
+  <view class='z_left'>取餐码</view>
+  <view class='z_right'>
+    <view class='right_le'>
+      <view style='display:flex;align-items:center;'>
+        <text style='font-size:46rpx;'>{{orderInfo.order.code}}</text>
+        <view class='z_state'  style='background-color: #fee0da;color:#e9765d;'>已付款</view>
+      </view>
+      <view>凭此码至门店柜台取餐</view>
+    </view>
+    <image src='https://pic.repaiapp.com/static/png/20171228/20/1514465316067756102.png' bindtap='showimg'></image>
+  </view>
+</view> 
+<!--完成  -->
+<view class='z_qc jieshu {{orderInfo.order.tcClass}}' wx:if="{{(orderInfo.order.ordertype==6 || orderInfo.order.ordertype==7)&&orderInfo.order.status==3}}">
+  <view class='z_left'>取餐码</view>
+  <view class='z_right'>
+    <view class='right_le'>
+      <view style='display:flex;align-items:center;'>
+        <text style='font-size:46rpx;'>{{orderInfo.order.code}}</text>
+        <view class='z_state' style='background-color: #eeeeee;color:#ababab;'>已付款</view>
+      </view>
+      <view>凭此码至门店柜台取餐</view>
+    </view>
+    <image src='https://pic.repaiapp.com/static/png/20171228/20/1514465316067756102.png' bindtap='showimg'></image>
+    <image src='https://pic.repaiapp.com/static/png/20171229/17/1514539750335910157.png' class='z_wancheng' style='width: 134rpx;height: 134rpx;top: 50%;transform: translateY(-50%);right: 20rpx;'></image>
+  </view>
+</view>
+
+<!--已失效 付过钱之后退款  -->
+<view class='z_qc jieshu' wx:if="{{(orderInfo.order.ordertype==6 || orderInfo.order.ordertype==7)&&orderInfo.order.paystatus==1&&(orderInfo.order.status==4||orderInfo.order.status==5)}}">
+  <view class='z_left'>取餐码</view>
+  <view class='z_right'>
+    <view class='right_le'>
+      <view style='display:flex;align-items:center;'>
+        <text style='font-size:46rpx;'>{{orderInfo.order.code}}</text>
+        <view class='z_state' style='background-color: #eeeeee;color:#ababab;'>已付款</view>
+      </view>
+      <view>凭此码至门店柜台取餐</view>
+    </view>
+    <image src='https://pic.repaiapp.com/static/png/20171228/20/1514465316067756102.png' bindtap='showimg'></image>
+    <image src='https://pic.repaiapp.com/static/png/20171229/17/1514540112649710254.png' class='z_wancheng' style='width: 134rpx;height: 134rpx;top: 50%;transform: translateY(-50%);right: 20rpx;'></image>
+  </view>
+</view>
+<!--  -->
+<!--mask  -->
+<view class='z_mask' wx:if="{{zState}}" bindtap='hideimg'></view>
+<view class='z_tk' wx:if="{{zState}}">
+  <view class='tk_top'>小程序取餐码</view>
+  <view class='tk_bottom'>
+    <view class='tk_conTitle'>{{orderInfo.order.shopname}}</view> 
+    <view style='font-size:26rpx;color:#000;margin:25rpx 0rpx;'>取餐号</view>
+    <view style='font-size:48rpx;color:#000'>{{orderInfo.order.code}}</view>
+    <view class='z_time'>{{orderInfo.order.addtime}}</view>
+    <image src='{{orderInfo.order.codeImg}}'></image>
+  </view>
+</view>
+
+
+<view class='z_list'>
+  <view>用餐方式</view>
+  <view>{{orderInfo.order.ordertypename}}</view>
+</view>
+<view class='z_list' style='margin-bottom:20rpx;' wx:if="{{orderInfo.order.ordertype==6}}">
+  <view>桌号</view>
+  <view>{{orderInfo.order.tableNo}}</view>
+</view>
+
+<view class='z_list' style='margin-bottom:20rpx;' wx:if="{{orderInfo.order.ordertype==7}}">
+  <view>预约时间</view>
+  <view>{{orderInfo.order.ztTime}}</view>
+</view>
+
+<view class='z_list' style='margin-bottom:20rpx;' wx:if="{{orderInfo.order.ordertype==7}}">
+  <view>自提手机号</view>
+  <view>{{orderInfo.order.ztPhone}}</view>
+</view>
+
+<view class="panel cart-info">
+    <view class="line shop-info">
+        <image src="{{orderInfo.order.shoplogo_30}}" class="logo"></image>
+        <text class="name">{{orderInfo.order.shopname}}</text>
+    </view>
+    <view class="line cart-items">
+        <view class="{{(orderInfo.order.bagcost > 0||orderInfo.order.shopps > 0||orderInfo.order.cxcost>0||orderInfo.order.yhjcost>0)?'cart-items-list':''}}">
+            <block wx:for="{{orderInfo.orderdet}}" wx:for-item="order" wx:key="id">
+                <view class="cart-item" wx:if="{{order.goodscount>0}}">
+                    <view class="name last">{{order.goodsname}}<text class="skuClass" wx:if="{{order.skuAttrname!=''}}">{{order.skuAttrname}}</text></view>
+                    <text class="num">x{{order.goodscount}}</text>
+                    <text class="price">￥{{order.goodscost}}</text>
+                </view>
+            </block>
+            <!--各种费用-->
+            <view class="cart-append">
+                <!--餐盒费-->
+                <view class="cart-item" wx:if='{{orderInfo.order.bagcost > 0}}'>
+                    <text class="name">餐盒费</text>
+                    <text class="num"> </text>
+                    <text class="price">￥{{orderInfo.order.bagcost}}</text>
+                </view>
+                <!--配送费-->
+                <view class="cart-item" wx:if='{{orderInfo.order.shopps > 0}}'>
+                    <text class="name">配送费</text>
+                    <text class="num"> </text>
+                    <text class="price">￥{{orderInfo.order.shopps}}</text>
+                </view>
+                <view class="cart-item" wx:if='{{orderInfo.order.discount_decrease_cost > 0}}'>
+                    <text class="name">会员折扣</text>
+                    <text class="num"> </text>
+                    <text class="price">￥-{{orderInfo.order.discount_decrease_cost}}</text>
+                </view>
+                <!--优惠-->
+                <view class="cart-coupon">
+                    <view class="cart-coupon-jian" wx:if="{{orderInfo.order.cxcost>0}}">
+                        <view class="jian"><image src="https://pic.repaiapp.com/pic/e7/50/80/e750807744c2f2ceb80d8d5000ba2dbe2f01ab09.png"></image><text style="color:#000;">在线支付立减优惠</text></view>
+                        <text>-￥{{orderInfo.order.cxcost}}</text>
+                    </view>
+                    <view class="cart-coupon-quan" wx:if="{{orderInfo.order.yhjcost>0}}">
+                        <view class="quan"><image src="https://pic.repaiapp.com/pic/0b/98/62/0b98628ea0dc7961d0d8e74ca641a12822ddc314.png"></image><text style="color:#000;">优惠券优惠</text></view>
+                        <text>-￥{{orderInfo.order.yhjcost}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="cart-item-total clearfix">
+            <view class="contact-busi" bindtap="callShop" data-phone="{{orderInfo.order.shopphone}}"><text>联系商家</text></view>
+            <text class='pay-money'>实付 ￥{{zxlPrice}}</text>
+            <!-- <text class="pay-money">实付 ￥{{orderInfo.order.allcost-orderInfo.order.yhjcost-orderInfo.order.cxcost}}</text> -->
+        </view>
+    </view>
+    <!--<block wx:if="{{orderInfo.order.statusInfo.callShop}}">-->
+        <!--<view class="call-shop">-->
+            <!--<botton class="content" bindtap="callShop" data-phone="{{orderInfo.order.shopphone}}">-->
+                <!--<view class="icon-call"></view>联系商家</botton>-->
+        <!--</view>-->
+    <!--</block>-->
+</view>
+  <!--订单达到金额是否有红包可领取  -->
+  <block wx:if="{{orderInfo.order.statusInfo.callShop}}">
+        <view class="isGet" bindtap="{{status>0?'':'getCoupon'}}">
+          <image src="{{status<=0?'https://pic.repaiapp.com/pic/7c/a0/0f/7ca00f84ec6551325cc4e241249ce6b52c9f6295.png':'https://pic.repaiapp.com/pic/7f/c7/d1/7fc7d13c90d6f82c2483dc880b474d538aeee144.png'}}"></image>
+        </view>
+  </block>
+  <!-- <view class="line shop-info">
+        <text class="name panel-title">订单信息</text>
+  </view> -->
+
+
+<view class="panel cart-info">
+    <view class="line shop-info">
+        <text class="name panel-title">订单信息</text>
+    </view>
+    <view>
+        <view class="cell clearfix">订单号码：
+            <text>{{orderInfo.order.dno}}</text>
+            <text class="copy" bindtap="copy" data-copynum="{{orderInfo.order.dno}}">复制</text>
+        </view>
+        <view class="cell">下单时间：
+            <text>{{orderInfo.order.addtime}}</text>
+        </view>
+        <view class="cell">支付方式：
+            <text>在线支付</text>
+        </view>
+        <view class="cell" wx:if='{{orderInfo.order.content}}'>备注：
+            <text>{{orderInfo.order.content}}</text>
+        </view>
+        <view class="cell" wx:if='{{orderInfo.order.ordertype=="3"}}'>用餐人数：
+            <text>{{orderInfo.order.psusername}}</text>
+        </view>
+    </view>
+</view>
+<view class="panel cart-info panel2" wx:if="{{orderInfo.order.showPost}}">
+    <view class="line shop-info">
+        <text class="name panel-title">配送信息</text>
+    </view>
+    <view class="">
+        <view class="cell delivery-way clearfix">送达时间：
+            <text>{{orderInfo.order.postdate}}</text>
+        </view>
+        <view class="cell clearfix  delivery-way">
+            <view class="cell-l-box">送货地址：</view>
+            <view class="cell-r-box f-r">
+                <text>{{orderInfo.order.buyeraddress}}</text>
+                <text>{{orderInfo.order.buyername}} {{orderInfo.order.buyerphone}}</text>
+
+            </view>
+        </view>
+        <view class="cell delivery-way clearfix">配送方式：
+            <text>{{sendtype}}</text>
+        </view>
+        <view class="cell delivery-way clearfix" wx:if="{{orderInfo.order.deliveryerInfo.name!=''&&sendtype=='骑士配送'}}">配送骑士：
+           <view class="f-r noMargin">
+              <text class="iconfont icon-right-more"></text><text class="qishiName">{{orderInfo.order.deliveryerInfo.name}}</text><text>|</text><text class="qishi" data-phone="{{orderInfo.order.deliveryerInfo.phone}}" bindtap="callShop">联系骑士</text>
+           </view>
+        </view>
+    </view>
+</view>
+<view class="footerTip"></view>

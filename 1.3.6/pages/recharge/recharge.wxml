@@ -1,0 +1,17 @@
+<!--pages/recharge/recharge.wxml-->
+<view class='balance'>
+    <image src='https://pic.repaiapp.com/static/png/20180621/18/1529576894304535249.png'></image>
+    <text class='text'>当前可用余额</text>
+    <text class='num'>{{list.balance}}</text>
+</view>
+<view class='line'></view>
+<view class='select_money'>
+    <view class='item {{item.id==itemIndex?"active":""}}' wx:for='{{list.recharge_set}}' data-item='{{item}}' bindtap='select'>
+        <text>{{item.present_money}}元</text>
+        <text>售价{{item.recharge_money}}元</text>
+    </view>
+</view>
+<view class='footer'>
+    <view class='btn' bindtap='nowPay'>立即充值</view>
+    <text>点击“立即充值”即表示同意<text class='rule'>《充值活动协议》</text></text>
+</view>

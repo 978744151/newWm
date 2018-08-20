@@ -1,0 +1,28 @@
+page{background: #f6f6f6;}
+.rp-undata-default {
+    padding-top: 236rpx;
+    text-align: center;
+}
+
+.rp-undata-default .undata-icon {
+    display: inline-block;
+    width: 110rpx;
+    height: 110rpx;
+    background: url('https://pic.repaiapp.com/pic/e7/78/3d/e7783d8e163d4c885f5ae06917be7e26fbb65fe0.png') center no-repeat;
+    background-size: cover;
+}
+
+.rp-undata-default .undata-txt {
+    margin-top: 48rpx;
+    font-size: 30rpx;
+    color: #767e88;
+    text-align: center;
+}
+
+.rp-undata-default .undata-card {
+    display: inline-block;
+    width: 128rpx;
+    height: 104rpx;
+    background: url('https://pic.repaiapp.com/pic/56/69/97/566997db720e655348126a6cbcf96aa9c23c66ca.png') center no-repeat;
+    background-size: cover;
+}

@@ -1,0 +1,15 @@
+<block>
+    <view class="bg_content">
+        <view class="bg_tk">
+            <view>本店暂停营业</view>
+            <view>如有不便敬请谅解</view>
+        </view>
+        <view class="bg_know" bindtap="reback">知道了</view>
+        <view class="bg_bg"></view>
+    </view>
+</block>
+
+<!--底部小店图标-->
+<view class="rp-foot">
+    <view class="img"></view>
+</view>

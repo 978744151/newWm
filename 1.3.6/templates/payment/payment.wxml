@@ -1,0 +1,35 @@
+<!--templates/payment/payment.wxml-->
+<view class='confirmPayment {{data.isShow || balancePay?"paymentShow":"paymentHide"}}' catchtap='_close'></view>
+<view class="payTypeContent {{data.isShow?'openClass':'closeClass'}}">
+     <view class='payTypeTitle'>
+        选择支付方式
+    </view> 
+    <view class='payTypeItem'>
+        <view class="weixin {{payMethod=='weChat'?'selected':''}}" catchtap='_swithcPayType' data-paymethod='weChat'>
+            <view class='payTypeRight'>
+                <view class='one'>微信支付</view>
+                <view class='two'>微信安全支付</view>
+            </view>
+        </view>
+    </view>
+    <view class="payTypeItem balance {{noBalance?'noBalance':''}}">
+        <view class="yue {{payMethod=='balance'?'selected':''}}" catchtap='_swithcPayType' data-paymethod='balance'>
+            <view class='payTypeRight'>
+                <view class='one'>
+                    钱包余额
+                </view>
+                <view class='two' wx:if='{{!isMember}}'>
+                    暂未开通会员卡不能使用余额支付
+                </view>
+                <view class='two' wx:elif='{{!noBalance}}'>
+                    可用余额{{data.balance}}元
+                </view>
+				<view class='two' wx:else data-url='/pages/recharge/recharge' bindtap='_jump'>
+					还差{{howMuch}}元,才可使用余额支付,去充值>
+				</view>
+            </view>
+        </view>
+    </view>
+     <view class="{{isChecked?'is_checked':'normal'}} confirmPay"  bindtap='nowPay'>确认支付</view> 
+    <!-- <view class="{{'is_checked'}} confirmPay"  bindtap='nowPay'>确认支付</view> -->
+</view>

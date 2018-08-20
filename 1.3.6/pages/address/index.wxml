@@ -1,0 +1,77 @@
+<view style="display: {{showEdit ? 'none' : 'block'}}">
+    <block wx:if='{{hasAddr}}'>
+        <radio-group class="address-list" bindchange="redioTap">
+            <label class="address rp-flex align-center" wx:for="{{addressList}}" wx:for-item="address">
+                <view class="radio-wapper">
+                    <radio class="address-radio" value="{{address.id}}" checked="{{address.default == 1 ? true : false}}" color="#31a6f6" />
+                </view>
+                <view class="address-info rp-flex-item" catchtap="redioTap" data-aid="{{address.id}}">
+                    <view class="info-top">
+                        <text class="name">{{address.contactname}}</text>
+                        <text class="phone">{{address.phone}}</text>
+                    </view>
+                    <view class="info-bottom rp-flex align-center">
+                        <view class="tag">{{address.tagName}}</view>
+                        <view class="addr rp-flex-item">{{address.address}}</view>
+                    </view>
+            </view>
+                <view class="address-edit" catchtap="editAddress" data-aid="{{address.id}}"></view>
+            </label>
+        </radio-group>
+    </block>
+    <block wx:if='{{hasAddr ? false : true}}'>
+        <view class="noAddress">
+            <text>您还没有地址，可以点击底部按钮新建地址</text>
+        </view>
+    </block>
+    <view class="newAddress">
+        <view class="createAddress" bindtap="tapNewAddr">
+            <text>新增地址</text>
+        </view>
+    </view>
+</view>
+<view style="display: {{showEdit ? 'block' : 'none'}}">
+    <view class="edit-addr">
+        <view class="cell">
+            <view class="cell-hd">
+                <text>联系人</text>
+            </view>
+            <view class="cell-bd">
+                <input data-name="name" type="text" placeholder="收货人姓名" name="contactname" value="{{editInfo.contactname}}" bindblur="inputBlur" placeholder-style="color:#cfcfcf;" />
+            </view>
+        </view>
+        <view class="cell">
+            <view class="cell-hd">
+                <text>联系电话</text>
+            </view>
+            <view class="cell-bd">
+                <input data-name="phone" type="number" placeholder="收货人电话" name="phone" value="{{editInfo.phone}}" bindblur="inputBlur" placeholder-style="color:#cfcfcf;" maxlength="11" />
+            </view>
+        </view>
+        <view class="cell">
+            <view class="cell-hd">
+                <text>送餐地址</text>
+            </view>
+            <view class="cell-bd cell-list">
+                <text bindtap="bindTapChooseLocation" class="cell-input {{bigadrDefault=='小区/写字楼/学校等'?'color-cf':''}}">{{bigadrDefault}}{{editInfo.bigadr}}</text>
+                <textarea data-name="addr" class="addr-detailadr" placeholder="详细地址（如门牌号）" cursor-spacing="10" value="{{editInfo.detailadr}}" bindblur="inputBlur" name="detailadr" placeholder-style="color:#cfcfcf;" />
+            </view>
+        </view>
+        <view class="cell">
+            <picker class="cell-picker" bindchange="bindPickerChange" value="{{editInfo.tag}}" range="{{tagList}}" name="tag">
+                <text>标签</text>
+                <text class="fr cell-more">{{pickerDefault}}{{tagList[editInfo.tag]}}</text>
+            </picker>
+        </view>
+    </view>
+    <view class="addr-action">
+        <view class="addr-del" style="{{isAdd ? 'display:none' : 'width:335rpx;margin-right: 20rpx;'}}" data-aid="{{editInfo.id}}" bindtap="delAddr">
+            <text>删除</text>
+        </view>
+        <view class="addr-edit" style="{{isAdd ? 'width:100%' : 'width:335rpx'}}" data-aid="{{editInfo.id}}" bindtap="editAddr">
+            <text>确定</text>
+        </view>
+    </view>
+    <view class="addr-back" bindtap="addrBack"></view>
+    <view class="message {{showMessage ? 'fade-in' : ''}}" hidden="{{!showMessage}}">{{messageContent}}</view>
+</view>

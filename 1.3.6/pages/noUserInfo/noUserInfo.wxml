@@ -1,0 +1,8 @@
+<!--nolocation 没授权定位页面 -->
+<view class="power-wapper">
+  <!-- <text class="iconfont icon-on-power"></text> -->
+  <image class='img' src='{{head_img}}'></image>
+  <text>{{nick_name}}</text>
+  <view class="tip">申请获得你的公开信息(昵称、头像等)</view>
+  <button class='btn' open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">微信授权</button>
+</view>

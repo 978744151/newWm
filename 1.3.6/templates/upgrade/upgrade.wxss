@@ -1,0 +1,16 @@
+.upgrade{
+  position: fixed;
+  width: 83%;
+  transform: translate(-50%,-50%);
+  left: 50%;
+  top:50%;
+  background: #fff;
+  border-radius: 8px;
+  z-index: 1111111111111;
+  }
+.upgrade-img{text-align: center;}
+.upgrade-img image{width: 219rpx;height: 214rpx;}
+.upgrade_text{font-size: 32rpx;color: #141414;text-align: center;padding: 0 120rpx;line-height: 58rpx;margin-bottom: 50rpx;}
+.upgrade-ok{color:#3388ff;font-size: 32rpx;line-height: 100rpx;text-align: center;border-top: 1px solid #ddd;}
+
+

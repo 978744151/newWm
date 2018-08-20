@@ -1,0 +1,3 @@
+<template name="message">
+    <view class="message {{showMessage ? 'fade-in' : ''}}" hidden="{{!showMessage}}">{{messageContent}}</view>
+</template>
